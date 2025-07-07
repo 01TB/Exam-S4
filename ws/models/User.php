@@ -26,5 +26,15 @@
         public function setNom($nom) { $this->nom = $nom; }
         public function setPrenom($prenom) { $this->prenom = $prenom; }
         public function setPassword($password) { $this->password = $password; }
+
+        public static function checkUser($nom,$password){
+            $db = getDB();
+            $stmt = $db->prepare("SELECT * FROM user WHERE nom=:nom AND password=:password");            
+            
+            $stmt->bindParam(':nom',$nom);
+            $stmt->bindParam(':password',$password);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
     }
 ?>

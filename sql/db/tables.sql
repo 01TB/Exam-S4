@@ -48,7 +48,8 @@ CREATE TABLE pret (
     duree_remboursement INT NOT NULL,
     taux DECIMAL(5,2) NOT NULL,
     date_demande DATE NOT NULL,
-    date_validation DATE NOT NULL,
+    date_validation DATE DEFAULT NULL,
+    statut ENUM('cree','valide','refuse') NOT NULL,
     FOREIGN KEY (id_client) REFERENCES client(id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (id_user_demandeur) REFERENCES user(id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (id_user_validateur) REFERENCES user(id) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -76,4 +77,12 @@ CREATE TABLE depot (
     date_depot TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     description TEXT,
     FOREIGN KEY (id_user) REFERENCES user(id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+CREATE TABLE interet_pret_periode(
+    id_pret INT AUTO_INCREMENT PRIMARY KEY,
+    montant DECIMAL(10,2) NOT NULL,
+    mois INT NOT NULL,
+    annee INT NOT NULL,
+    UNIQUE (id_pret,mois,annee)
 );
