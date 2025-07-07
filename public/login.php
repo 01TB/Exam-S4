@@ -44,7 +44,7 @@
         if (response.success) {
           alert("lalalala");
           document.querySelector('.success').style.display = 'block';
-          setTimeout(() => window.location.href = 'interet.php', 1000);
+          setTimeout(() => window.location.href = response.redirect, 1000);
         } else {
           document.querySelector('.error').style.display = 'block';
           document.querySelector('.error').textContent = response.message || 'Erreur de connexion';

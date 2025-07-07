@@ -1,91 +1,174 @@
-<?php
-require_once '../partials_reception/header.php';
-require_once '../partials_reception/sidebar.php';
-?>
-<style>
-    main {
-        margin-left: 0;
-        padding: 2rem;
-        font-family: 'Inter', sans-serif;
-    }
+<!DOCTYPE html>
+<html lang="fr">
 
-    .container {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 1rem;
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPbank - Réception</title>
+    <!-- Tailwind CSS and DaisyUI CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <!-- Google Fonts: Playfair Display, Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Heroicons CDN -->
+    <script src="https://unpkg.com/heroicons@2.1.1/dist/heroicons.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F6F7;
+            /* Off-White */
+            color: #101820;
+            /* Near Black */
+        }
 
-    .link-btn {
-        padding: 10px;
-        background-color: #FFCC00;
-        color: #0D0D0D;
-        text-decoration: none;
-        border-radius: 5px;
-    }
+        h1,
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #003A70;
+            /* Dark Blue */
+        }
 
-    .link-btn:hover {
-        background-color: #FFDB4D;
-    }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 58, 112, 0.1);
+            /* Shadow with Dark Blue tint */
+        }
 
-    th,
-    td {
-        padding: 10px;
-        border: 1px solid #FFC6B3;
-        text-align: left;
-    }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
 
-    th {
-        background-color: #FFF2E6;
-        color: #0D0D0D;
-    }
-</style>
-<main>
-    <div class="container">
-        <a href="liste_prets.php" class="link-btn">Liste des prêts</a>
-        <a href="inserer.php" class="link-btn">Insérer un prêt</a>
-    </div>
-    <h2>5 derniers prêts</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>ID Prêt</th>
-                <th>Montant</th>
-                <th>Statut</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Exemple statique, à remplacer par des données réelles -->
-            <tr>
-                <td>1</td>
-                <td>5000</td>
-                <td>Approuvé</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>3000</td>
-                <td>En attente</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>7000</td>
-                <td>Rejeté</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>2000</td>
-                <td>Approuvé</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>4000</td>
-                <td>En attente</td>
-            </tr>
-        </tbody>
-    </table>
-</main>
-<?php require_once '../partials_reception/footer.php'; ?>
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header with Navbar -->
+    <header class="bg-[#003A70] shadow">
+        <div class="navbar container mx-auto px-4">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <label tabindex="0" class="btn btn-ghost lg:hidden">
+                        <svg class="h-6 w-6" fill="none" stroke="#007CBA" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </label>
+                    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#A0B2B8] rounded-box w-52">
+                        <li><a href="/EXAM-S4/public/reception/reception.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Accueil</a></li>
+                        <li><a href="/EXAM-S4/public/reception/inserer.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Insérer un prêt</a></li>
+                        <li><a href="/EXAM-S4/public/reception/liste_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Liste des prêts</a></li>
+                        <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Déconnexion</a></li>
+                    </ul>
+                </div>
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 mr-2 fill-[#007CBA]" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
+                    <a class="text-2xl font-bold text-[#007CBA] font-['Playfair_Display']">CPbank</a>
+                </div>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal px-1">
+                    <li><a href="/EXAM-S4/public/reception/reception.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7] rounded">Accueil</a></li>
+                    <li><a href="/EXAM-S4/public/reception/inserer.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7] rounded">Insérer un prêt</a></li>
+                    <li><a href="/EXAM-S4/public/reception/liste_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7] rounded">Liste des prêts</a></li>
+                    <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7] rounded">Déconnexion</a></li>
+                </ul>
+            </div>
+            <div class="navbar-end">
+                <span class="text-[#007CBA] font-['Inter']">Réception</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <h2 class="text-3xl font-['Playfair_Display'] mb-6 fade-in">Tableau de bord - Réception</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <!-- Card for Insérer un prêt -->
+            <a href="/EXAM-S4/public/reception/inserer.php" class="card bg-[#F5F6F7] rounded-lg shadow-lg p-6 flex items-center space-x-4 fade-in">
+                <svg class="h-12 w-12 text-[#007CBA]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                </svg>
+                <div>
+                    <h3 class="text-xl font-['Playfair_Display'] text-[#003A70]">Insérer un prêt</h3>
+                    <p class="text-[#101820] font-['Inter']">Créer une nouvelle demande de prêt pour un client.</p>
+                </div>
+                <img src="https://via.placeholder.com/100x100?text=Prêt" alt="Prêt Icon" class="ml-auto rounded-full">
+            </a>
+            <!-- Card for Liste des prêts -->
+            <a href="/EXAM-S4/public/reception/liste_prets.php" class="card bg-[#F5F6F7] rounded-lg shadow-lg p-6 flex items-center space-x-4 fade-in">
+                <svg class="h-12 w-12 text-[#007CBA]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14"></path>
+                </svg>
+                <div>
+                    <h3 class="text-xl font-['Playfair_Display'] text-[#003A70]">Liste des prêts</h3>
+                    <p class="text-[#101820] font-['Inter']">Voir toutes les demandes de prêts enregistrées.</p>
+                </div>
+                <img src="https://via.placeholder.com/100x100?text=Liste" alt="Liste Icon" class="ml-auto rounded-full">
+            </a>
+        </div>
+
+        <!-- Last 5 Loans Table -->
+        <h2 class="text-2xl font-['Playfair_Display'] mb-4 fade-in">5 derniers prêts</h2>
+        <div class="overflow-x-auto">
+            <table class="table w-full border-collapse">
+                <thead>
+                    <tr class="bg-[#A0B2B8] text-[#003A70]">
+                        <th class="font-['Playfair_Display']">ID Prêt</th>
+                        <th class="font-['Playfair_Display']">Montant</th>
+                        <th class="font-['Playfair_Display']">Statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-[#007CBA] hover:text-[#F5F6F7] transition-colors">
+                        <td class="font-['Inter']">1</td>
+                        <td class="font-['Inter']">5000</td>
+                        <td class="font-['Inter'] text-[#007CBA]">Approuvé</td>
+                    </tr>
+                    <tr class="hover:bg-[#007CBA] hover:text-[#F5F6F7] transition-colors">
+                        <td class="font-['Inter']">2</td>
+                        <td class="font-['Inter']">3000</td>
+                        <td class="font-['Inter'] text-[#A0B2B8]">En attente</td>
+                    </tr>
+                    <tr class="hover:bg-[#007CBA] hover:text-[#F5F6F7] transition-colors">
+                        <td class="font-['Inter']">3</td>
+                        <td class="font-['Inter']">7000</td>
+                        <td class="font-['Inter'] text-[#A0B2B8]">Rejeté</td>
+                    </tr>
+                    <tr class="hover:bg-[#007CBA] hover:text-[#F5F6F7] transition-colors">
+                        <td class="font-['Inter']">4</td>
+                        <td class="font-['Inter']">2000</td>
+                        <td class="font-['Inter'] text-[#007CBA]">Approuvé</td>
+                    </tr>
+                    <tr class="hover:bg-[#007CBA] hover:text-[#F5F6F7] transition-colors">
+                        <td class="font-['Inter']">5</td>
+                        <td class="font-['Inter']">4000</td>
+                        <td class="font-['Inter'] text-[#A0B2B8]">En attente</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#F5F6F7] text-[#101820] text-center py-4 font-['Inter']">
+        <p>© 2025 CPbank. Tous droits réservés.</p>
+    </footer>
+</body>
+
+</html>

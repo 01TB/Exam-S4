@@ -69,12 +69,11 @@ class UserController
     public static function checkLogin()
     {
         $user = User::checkUser($_POST['nom'], $_POST['password']);
-        $message = 'Connexion reussie';
+        $response = ['success' => false, 'message' => 'User not found!'];
         if ($user) {
             $_SESSION['user'] = $user;
-            $response = ["success" => true];
-        } else {
-            $message = 'User not found!';
+            $redirect = $user['id_departement'] === 1 ? 'finance/finance.php' : 'reception/reception.php';
+            $response = ['success' => true, 'redirect' => $redirect];
         }
         Flight::json($response);
     }
