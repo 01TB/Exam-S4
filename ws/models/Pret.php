@@ -9,10 +9,14 @@
         private $montantRemboursementParMois;
         private $montantTotalRemboursement;
         private $dureeRemboursement;
+
+        private $status;
         private $taux;
         private $dateDemande;
 
-        public function __construct($id, $idClient, $idUserDemandeur, $idUserValidateur, $idTypePret, $montantPret, $montantRemboursementParMois, $montantTotalRemboursement, $dureeRemboursement, $taux, $dateDemande) {
+        public function __construct($id, $idClient, $idUserDemandeur, $idUserValidateur, $idTypePret, 
+                                    $montantPret, $montantRemboursementParMois, $montantTotalRemboursement, 
+                                    $dureeRemboursement, $status, $taux, $dateDemande) {
             $this->id = $id;
             $this->idClient = $idClient;
             $this->idUserDemandeur = $idUserDemandeur;
@@ -22,6 +26,7 @@
             $this->montantRemboursementParMois = $montantRemboursementParMois;
             $this->montantTotalRemboursement = $montantTotalRemboursement;
             $this->dureeRemboursement = $dureeRemboursement;
+            $this->status = $status;
             $this->taux = $taux;
             $this->dateDemande = $dateDemande;
         }
@@ -36,6 +41,7 @@
         public function getMontantRemboursementParMois() { return $this->montantRemboursementParMois; }
         public function getMontantTotalRemboursement() { return $this->montantTotalRemboursement; }
         public function getDureeRemboursement() { return $this->dureeRemboursement; }
+        public function getStatus(){return $this->status;}
         public function getTaux() { return $this->taux; }
         public function getDateDemande() { return $this->dateDemande; }
 
@@ -48,6 +54,7 @@
         public function setMontantRemboursementParMois($montantRemboursementParMois) { $this->montantRemboursementParMois = $montantRemboursementParMois; }
         public function setMontantTotalRemboursement($montantTotalRemboursement) { $this->montantTotalRemboursement = $montantTotalRemboursement; }
         public function setDureeRemboursement($dureeRemboursement) { $this->dureeRemboursement = $dureeRemboursement; }
+        public function setStatus($status){$this->status = $status;}
         public function setTaux($taux) { $this->taux = $taux; }
         public function setDateDemande($dateDemande) { $this->dateDemande = $dateDemande; }
     }
