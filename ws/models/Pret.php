@@ -124,7 +124,7 @@
          * @param Pret $pret - Objet Pret à créer
          * @return int - ID du nouveau prêt
          */
-        public static function demandePret(Pret $pret) {
+        public static function demanderPret(Pret $pret) {
             $db = getDB();
             $stmt = $db->prepare("INSERT INTO pret (id_client, 
                                                            id_user_demandeur, 
