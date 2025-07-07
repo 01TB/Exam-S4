@@ -1,4 +1,6 @@
 <?php
+
+    require_once __DIR__ . '../inc/db.php';
     class Pret {
         private $id;
         private $idClient;
@@ -12,10 +14,11 @@
         private $status;
         private $taux;
         private $dateDemande;
+        private $dateValidation;
 
         public function __construct($id, $idClient, $idUserDemandeur, $idUserValidateur, $idTypePret, 
                                     $montantPret, $montantRemboursementParMois, $montantTotalRemboursement, 
-                                    $dureeRemboursement, $status, $taux, $dateDemande) {
+                                    $dureeRemboursement, $status, $taux, $dateDemande, $dateValidation) {
             $this->id = $id;
             $this->idClient = $idClient;
             $this->idUserDemandeur = $idUserDemandeur;
@@ -28,6 +31,7 @@
             $this->status = $status;
             $this->taux = $taux;
             $this->dateDemande = $dateDemande;
+            $this->$dateValidation = $dateValidation;
         }
 
         // Getters
@@ -43,6 +47,7 @@
         public function getStatus(){return $this->status;}
         public function getTaux() { return $this->taux; }
         public function getDateDemande() { return $this->dateDemande; }
+        public function getDateValidation() { return $this->dateValidation; }
 
         // Setters
         public function setIdClient($idClient) { $this->idClient = $idClient; }
@@ -56,5 +61,31 @@
         public function setStatus($status){$this->status = $status;}
         public function setTaux($taux) { $this->taux = $taux; }
         public function setDateDemande($dateDemande) { $this->dateDemande = $dateDemande; }
+        public function setDateValidation($dateValidation) { $this->dateValidation = $dateValidation; }
+        
+        // CRUD Operations
+        public static function getAll() {
+            $db = getDB();
+            $stmt = $db->query("SELECT * FROM pret");
+            $types = [];
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $types[] = new Pret(
+                    $row['id'],
+                    $row['id_client'],
+                    $row['id_user_demandeur'],
+                    $row['id_user_validateur'],
+                    $row['id_type_pret'],
+                    $row['montant_pret'],
+                    $row['montant_remboursement_par_mois'],
+                    $row['montant_total_remboursement'],
+                    $row['duree_remboursement'],
+                    $row['status'],
+                    $row['taux'],
+                    $row['date_demande'],
+                    $row['date_validation'],
+                );
+            }
+            return $types;
+        }
     }
 ?>
