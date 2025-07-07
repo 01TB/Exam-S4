@@ -10,11 +10,12 @@ $routes = [
     'user_routes',
     'pret_routes',
     'interet_routes',
+    'type_pret_routes',
 ];
 
 foreach ($routes as $route) {
     require 'routes/' . $route . '.php';
 }
-
+session_start();
 
 Flight::start();

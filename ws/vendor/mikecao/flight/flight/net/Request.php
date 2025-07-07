@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Flight: An extensible micro-framework.
  *
@@ -18,7 +19,7 @@ use flight\util\Collection;
  * The default request properties are:
  *   url - The URL being requested
  *   base - The parent subdirectory of the URL
- *   method - The request method (GET, POST, PUT, DELETE)
+ *   method - The request method (GET, POST, POST, DELETE)
  *   referrer - The referrer URL
  *   ip - IP address of the client
  *   ajax - Whether the request is an AJAX request
@@ -34,7 +35,8 @@ use flight\util\Collection;
  *   accept - HTTP accept parameters
  *   proxy_ip - Proxy IP address of the client
  */
-class Request {
+class Request
+{
     /**
      * @var string URL being requested
      */
@@ -46,7 +48,7 @@ class Request {
     public $base;
 
     /**
-     * @var string Request method (GET, POST, PUT, DELETE)
+     * @var string Request method (GET, POST, POST, DELETE)
      */
     public $method;
 
@@ -130,12 +132,13 @@ class Request {
      *
      * @param array $config Request configuration
      */
-    public function __construct($config = array()) {
+    public function __construct($config = array())
+    {
         // Default properties
         if (empty($config)) {
             $config = array(
                 'url' => str_replace('@', '%40', self::getVar('REQUEST_URI', '/')),
-                'base' => str_replace(array('\\',' '), array('/','%20'), dirname(self::getVar('SCRIPT_NAME'))),
+                'base' => str_replace(array('\\', ' '), array('/', '%20'), dirname(self::getVar('SCRIPT_NAME'))),
                 'method' => self::getMethod(),
                 'referrer' => self::getVar('HTTP_REFERER'),
                 'ip' => self::getVar('REMOTE_ADDR'),
@@ -163,7 +166,8 @@ class Request {
      *
      * @param array $properties Array of request properties
      */
-    public function init($properties = array()) {
+    public function init($properties = array())
+    {
         // Set all the defined properties
         foreach ($properties as $name => $value) {
             $this->$name = $value;
@@ -202,7 +206,8 @@ class Request {
      *
      * @return string Raw HTTP request body
      */
-    public static function getBody() {
+    public static function getBody()
+    {
         static $body;
 
         if (!is_null($body)) {
@@ -211,7 +216,7 @@ class Request {
 
         $method = self::getMethod();
 
-        if ($method == 'POST' || $method == 'PUT' || $method == 'DELETE' || $method == 'PATCH') {
+        if ($method == 'POST' || $method == 'POST' || $method == 'DELETE' || $method == 'PATCH') {
             $body = file_get_contents('php://input');
         }
 
@@ -223,13 +228,13 @@ class Request {
      *
      * @return string
      */
-    public static function getMethod() {
+    public static function getMethod()
+    {
         $method = self::getVar('REQUEST_METHOD', 'GET');
 
         if (isset($_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE'])) {
             $method = $_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE'];
-        }
-        elseif (isset($_REQUEST['_method'])) {
+        } elseif (isset($_REQUEST['_method'])) {
             $method = $_REQUEST['_method'];
         }
 
@@ -241,7 +246,8 @@ class Request {
      *
      * @return string IP address
      */
-    public static function getProxyIpAddress() {
+    public static function getProxyIpAddress()
+    {
         static $forwarded = array(
             'HTTP_CLIENT_IP',
             'HTTP_X_FORWARDED_FOR',
@@ -272,7 +278,8 @@ class Request {
      * @param string $default Default value to substitute
      * @return string Server variable value
      */
-    public static function getVar($var, $default = '') {
+    public static function getVar($var, $default = '')
+    {
         return isset($_SERVER[$var]) ? $_SERVER[$var] : $default;
     }
 
@@ -282,7 +289,8 @@ class Request {
      * @param string $url URL string
      * @return array Query parameters
      */
-    public static function parseQuery($url) {
+    public static function parseQuery($url)
+    {
         $params = array();
 
         $args = parse_url($url);
@@ -293,7 +301,8 @@ class Request {
         return $params;
     }
 
-    public static function getScheme() {
+    public static function getScheme()
+    {
         if (
             (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) === 'on')
             ||
