@@ -15,6 +15,5 @@ foreach ($routes as $route) {
     require 'routes/'.$route.'.php';
 }
 
-require 'routes';
 
 Flight::start();
