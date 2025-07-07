@@ -131,6 +131,8 @@
         function formatMontant(montant) {
             return parseFloat(montant).toFixed(2).replace('.', ',');
         }
+
+       
     </script>
 </body>
 </html>
