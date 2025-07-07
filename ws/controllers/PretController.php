@@ -25,7 +25,7 @@
             Flight::json(['message' => 'Demande de prêt transféré', 'id' => $id], 201);
         }
 
-        public static function validePret(){
+        public static function validerPret(){
             $data = Flight::request()->data;
             $solde_actuelle = Depot::calculerSoldeDisponible($data->date_actuelle);
             $pret = Pret::getById($data->id_pret);
