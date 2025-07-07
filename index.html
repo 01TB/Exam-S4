@@ -14,7 +14,7 @@
 <body>
 
   <h1>Gestion des étudiants</h1>
-  <h2><a href="views/home.html">Home</a></h2>
+  <h2><a href="public/home.html">Home</a></h2>
 
   <div>
     <input type="hidden" id="id">
@@ -34,20 +34,9 @@
     <tbody></tbody>
   </table>
 
-  <script>
-    const apiBase = "http://localhost/tp-flightphp-crud/ws";
+  <script src="public/js/ajax.js"></script>
 
-    function ajax(method, url, data, callback) {
-      const xhr = new XMLHttpRequest();
-      xhr.open(method, apiBase + url, true);
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          callback(JSON.parse(xhr.responseText));
-        }
-      };
-      xhr.send(data);
-    }
+  <script>
 
     function chargerEtudiants() {
       ajax("GET", "/etudiants", null, (data) => {
