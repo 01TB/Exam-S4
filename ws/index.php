@@ -1,13 +1,12 @@
 <?php
 require 'vendor/autoload.php';
 require 'inc/db.php';
-$controllers = [
-    'IndexController',
-    'EtudiantController'
-];
+$routes = [];
 
-foreach ($controllers as $c){
-    require 'controllers/'.$c.'.php';
+foreach ($routes as $route) {
+    require 'routes/'.$route.'.php';
 }
+
+require 'routes';
 
 Flight::start();
