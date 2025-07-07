@@ -87,5 +87,161 @@
             }
             return $types;
         }
+
+        /**
+         * Récupère un prêt par son ID
+         * @param int $id - ID du prêt
+         * @return Pret|null - Objet Pret ou null si non trouvé
+         */
+        public static function getById(int $id): ?Pret {
+            $db = getDB();
+            $stmt = $db->prepare("SELECT * FROM pret WHERE id = ?");
+            $stmt->execute([$id]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            if ($row) {
+                return new Pret(
+                    $row['id'],
+                    $row['id_client'],
+                    $row['id_user_demandeur'],
+                    $row['id_user_validateur'],
+                    $row['id_type_pret'],
+                    $row['montant_pret'],
+                    $row['montant_remboursement_par_mois'],
+                    $row['montant_total_remboursement'],
+                    $row['duree_remboursement'],
+                    $row['status'],
+                    $row['taux'],
+                    $row['date_demande'],
+                    $row['date_validation']
+                );
+            }
+            return null;
+        }
+
+        /**
+         * Crée une nouvelle demande de prêt avec calcul automatique des mensualités
+         * @param Pret $pret - Objet Pret à créer
+         * @return int - ID du nouveau prêt
+         */
+        public static function demandePret(Pret $pret) {
+            $db = getDB();
+            $stmt = $db->prepare("INSERT INTO pret (id_client, 
+                                                           id_user_demandeur, 
+                                                           id_type_pret, 
+                                                           montant_pret, 
+                                                           duree_remboursement,
+                                                           taux,
+                                                           date_demande) 
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([
+                $pret->getIdClient(),
+                $pret->getIdUserDemandeur(),
+                $pret->getIdTypePret(),
+                $pret->getMontantPret(),
+                $pret->getDureeRemboursement(),
+                $pret->getTaux(),
+                $pret->getDateDemande(),
+            ]);
+            return $db->lastInsertId();
+        }
+
+        
+        /**
+         * Calcule la mensualité du prêt
+         * @return float - Montant de la mensualité
+         */
+        public function calculerMensualite(): float {
+            // Conversion du taux annuel en taux mensuel (décimal)
+            $tauxMensuel = $this->getTaux() / 12 / 100;
+            
+            // Calcul du nombre de mensualités (la durée est déjà en mois selon votre table)
+            $nbMensualites = $this->getDureeRemboursement();
+            
+            // Cas particulier pour les prêts sans intérêt
+            if ($tauxMensuel == 0) {
+                return round($this->getMontantPret() / $nbMensualites, 2);
+            }
+            
+            // Calcul standard
+            $mensualite = ($this->getMontantPret() * $tauxMensuel * pow(1 + $tauxMensuel, $nbMensualites)) 
+                        / (pow(1 + $tauxMensuel, $nbMensualites) - 1);
+            
+            return round($mensualite, 2);
+        }
+
+        /**
+         * Calcule le montant total à rembourser
+         * @return float - Montant total avec intérêts
+         */
+        public function calculerMontantTotal(): float {
+            $mensualite = $this->calculerMensualite();
+            return round($mensualite * $this->dureeRemboursement, 2);
+        }
+
+        /**
+         * Valide et enregistre un prêt avec calcul automatique des montants
+         * @param int $idValidateur - ID de l'utilisateur validant le prêt
+         * @return bool - True si la validation a réussi
+         */
+        public function validerPret(int $idValidateur): bool {
+            $this->idUserValidateur = $idValidateur;
+            $this->montantRemboursementParMois = $this->calculerMensualite();
+            $this->montantTotalRemboursement = $this->calculerMontantTotal();
+            $this->status = 'valide';
+            $this->dateValidation = date('Y-m-d H:i:s');
+
+            $db = getDB();
+            $stmt = $db->prepare("UPDATE pret SET 
+                                id_user_validateur = ?,
+                                montant_remboursement_par_mois = ?,
+                                montant_total_remboursement = ?,
+                                status = ?,
+                                date_validation = ?
+                                WHERE id = ?");
+            
+            return $stmt->execute([
+                $this->idUserValidateur,
+                $this->montantRemboursementParMois,
+                $this->montantTotalRemboursement,
+                $this->status,
+                $this->dateValidation,
+                $this->id
+            ]);
+        }
+        
+        /**
+         * Refuser et enregistre un prêt avec calcul automatique des montants
+         * @param int $idValidateur - ID de l'utilisateur refusant le prêt
+         * @return bool - True si le refus a réussi
+         */
+        public function refuserPret(int $idValidateur): bool {
+            $this->idUserValidateur = $idValidateur;
+            $this->montantRemboursementParMois = $this->calculerMensualite();
+            $this->montantTotalRemboursement = $this->calculerMontantTotal();
+            $this->status = 'refuse';
+            $this->dateValidation = date('Y-m-d H:i:s');
+
+            $db = getDB();
+            $stmt = $db->prepare("UPDATE pret SET 
+                                id_user_validateur = ?,
+                                montant_remboursement_par_mois = ?,
+                                montant_total_remboursement = ?,
+                                status = ?,
+                                date_validation = ?
+                                WHERE id = ?");
+            
+            return $stmt->execute([
+                $this->idUserValidateur,
+                $this->montantRemboursementParMois,
+                $this->montantTotalRemboursement,
+                $this->status,
+                $this->dateValidation,
+                $this->id
+            ]);
+        }
+
+
+
     }
 ?>

@@ -1,0 +1,2 @@
+Comment calculer la mensualité à rembourser sur un pret si on connait le montant emprunté, 
+le taux annuel et la durée de remboursement?
