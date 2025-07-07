@@ -8,6 +8,7 @@ $routes = [
     'client_routes',
     'historique_pret_routes',
     'user_routes',
+    'pret_routes'
 ];
 
 foreach ($routes as $route) {
