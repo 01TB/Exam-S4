@@ -7,7 +7,7 @@ $controllers = [
 ];
 
 foreach ($controllers as $c){
-    require 'app/controllers/'.$c.'.php';
+    require 'controllers/'.$c.'.php';
 }
 
 Flight::start();
