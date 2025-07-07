@@ -1,0 +1,70 @@
+Base de donnée : MySQL 11
+Je souhaite faire la conception de la base de donnée d'un établissement financier.
+Construis moi les tables.
+Voici les tables : 
+
+    - client :
+        - id
+        - nom
+        - prenom
+
+    - user :
+        - id
+        - id_departement
+        - nom
+        - prenom
+        - password
+
+    - departement :
+        - id
+        - nom
+
+    - demande : 
+        - id
+        - id_client
+        - montant
+        - id_type_pret
+        - date_demande
+
+    - historique_demande : 
+        - id
+        - id_user
+        - id_demande
+        - etat (créé / proposé / validé / refusé)
+        - date_modif
+
+    - proposition :
+        - id
+        - id_demande
+        - frequence_remboursement
+        - montant_remboursement_frequence
+        - duree_remboursement
+        - taux
+
+    - type_pret : 
+        - id
+        - nom
+        - montant_max
+        - montant_min
+        - duree_remboursement_max
+        - duree_remboursement_min
+        - taux
+
+    - pret :
+        - id
+        - id_client
+        - id_demande
+        - id_proposition
+        - montant_pret
+        - frequence_remboursement
+        - duree_remboursement
+        - taux
+        - montant_total_remboursement
+
+    - depot :
+        - id
+        - id_user
+        - nom_investisseur
+        - montant
+        - date_depot
+        - description
