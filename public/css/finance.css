@@ -1,0 +1,120 @@
+body {
+    background-color: #F5F5F5;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: #FFCC00;
+    padding: 1rem;
+    text-align: center;
+    color: #0D0D0D;
+    font-family: 'Playfair Display', serif;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #FFF2E6;
+}
+
+nav a {
+    padding: 0.5rem 1rem;
+    color: #0D0D0D;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #FFDB4D;
+}
+
+footer {
+    background-color: #F5F5F5;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #0D0D0D;
+    font-family: 'Inter', sans-serif;
+}
+
+main {
+    padding: 2rem;
+    font-family: 'Inter', sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h2 {
+    color: #0D0D0D;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #0D0D0D;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #FFDB4D;
+    border-radius: 0.375rem;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #FFCC00;
+    box-shadow: 0 0 0 2px #FFCC00;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+button {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #FFCC00;
+    color: #0D0D0D;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background-color: #FFDB4D;
+}
+
+.success {
+    color: #10B981;
+    text-align: center;
+    display:O none;
+}
+
+.error {
+    color: #EF4444;
+    text-align: center;
+    display: none;
+}
