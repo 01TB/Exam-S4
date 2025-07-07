@@ -230,8 +230,7 @@ require_once '../partials_reception/sidebar.php';
     </form>
 
     <div id="simulationContainer">
-        <button id="exportBtn" onclick="exportToPDF()">Exporter en PDF</button>
-        
+        <button type="button" id="generatePdfBtn" style="background-color: #9C27B0;">Générer PDF</button>        
         <div class="summary-cards">
             <div class="summary-card">
                 <h3>Mensualité</h3>
@@ -285,6 +284,7 @@ require_once '../partials_reception/sidebar.php';
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="../js/ajax.js"></script>
 <script>
 // Initialisation
 document.addEventListener('DOMContentLoaded', function() {
@@ -456,35 +456,85 @@ function openTab(tabName) {
     event.currentTarget.classList.add('active');
 }
 
-document.getElementById('loanForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(this);
-    const data = Object.fromEntries(formData);
-    
-    // Calcul des mensualités
-    const tauxMensuel = parseFloat(data.taux) / 12 / 100;
-    const nbMensualites = parseInt(data.duree_remboursement);
-    const montant = parseFloat(data.montant_pret);
-    
-    let mensualite;
-    if (tauxMensuel === 0) {
-        mensualite = montant / nbMensualites;
-    } else {
-        mensualite = (montant * tauxMensuel * Math.pow(1 + tauxMensuel, nbMensualites)) / 
-                    (Math.pow(1 + tauxMensuel, nbMensualites) - 1);
+    document.getElementById('loanForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+        
+        // Calcul des mensualités
+        const tauxMensuel = parseFloat(data.taux) / 12 / 100;
+        const nbMensualites = parseInt(data.duree_remboursement);
+        const montant = parseFloat(data.montant_pret);
+        
+        let mensualite;
+        if (tauxMensuel === 0) {
+            mensualite = montant / nbMensualites;
+        } else {
+            mensualite = (montant * tauxMensuel * Math.pow(1 + tauxMensuel, nbMensualites)) / 
+                        (Math.pow(1 + tauxMensuel, nbMensualites) - 1);
+        }
+        
+        const totalRemboursement = mensualite * nbMensualites;
+        
+        // Ajout des champs calculés
+        data.montant_remboursement_par_mois = mensualite.toFixed(2);
+        data.montant_total_remboursement = totalRemboursement.toFixed(2);
+        data.status = 'cree';
+        
+        console.log('Données à envoyer:', data);
+        alert('Demande de prêt soumise avec succès!\nMensualité: ' + mensualite.toFixed(2) + '€');
+    });
+
+    document.getElementById('generatePdfBtn').addEventListener('click', function() {
+        // Récupérer les données du formulaire
+        const formData = new FormData(document.getElementById('loanForm'));
+        const data = Object.fromEntries(formData);
+        
+        // Calculer les mensualités comme dans la fonction submit
+        const tauxMensuel = parseFloat(data.taux) / 12 / 100;
+        const nbMensualites = parseInt(data.duree_remboursement);
+        const montant = parseFloat(data.montant_pret);
+        
+        let mensualite;
+        if (tauxMensuel === 0) {
+            mensualite = montant / nbMensualites;
+        } else {
+            mensualite = (montant * tauxMensuel * Math.pow(1 + tauxMensuel, nbMensualites)) / 
+                        (Math.pow(1 + tauxMensuel, nbMensualites) - 1);
+        }
+        
+        const totalRemboursement = mensualite * nbMensualites;
+        
+        // Ajouter les champs calculés
+        data.montant_remboursement_par_mois = mensualite.toFixed(2);
+        data.montant_total_remboursement = totalRemboursement.toFixed(2);
+        
+        // Convertir l'objet en paramètres URL
+        const params = new URLSearchParams();
+        for (const key in data) {
+            params.append(key, data[key]);
+        }
+        
+        // Appel AJAX pour générer le PDF
+        ajax('POST', '/pdf', params.toString(), 
+            function(response) {
+                if (response && response.pdfUrl) {
+                    // Ouvrir le PDF dans un nouvel onglet
+                    window.open(response.pdfUrl, '_blank');
+                } else {
+                    console.log(response);
+                }
+            }
+        );
+    });
+
+    // Fonction pour exporter en PDF (existante, à modifier si nécessaire)
+    function exportToPDF() {
+        // Vous pouvez soit garder cette fonction pour l'export côté client
+        // Ou la rediriger vers la nouvelle fonction generatePdfBtn
+        document.getElementById('generatePdfBtn').click();
     }
-    
-    const totalRemboursement = mensualite * nbMensualites;
-    
-    // Ajout des champs calculés
-    data.montant_remboursement_par_mois = mensualite.toFixed(2);
-    data.montant_total_remboursement = totalRemboursement.toFixed(2);
-    data.status = 'cree';
-    
-    console.log('Données à envoyer:', data);
-    alert('Demande de prêt soumise avec succès!\nMensualité: ' + mensualite.toFixed(2) + '€');
-});
 </script>
 
 <?php require_once '../partials_reception/footer.php'; ?>
