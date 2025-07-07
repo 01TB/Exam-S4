@@ -1,0 +1,155 @@
+Crée les fonctions de CRUD de Depot à l'instar de Etudiant.
+Mets au points Depot.php, DepotController.php et depot_routes.php pour cela.
+
+Voici la structure de la table Depot : 
+
+-- Table des dépôts
+CREATE TABLE depot (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_user INT NOT NULL,
+    nom_investisseur VARCHAR(200) NOT NULL,
+    montant DECIMAL(15,2) NOT NULL,
+    date_depot TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    description TEXT,
+    FOREIGN KEY (id_user) REFERENCES user(id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- Table des utilisateurs (employés)
+CREATE TABLE user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_departement INT NOT NULL,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    FOREIGN KEY (id_departement) REFERENCES departement(id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+Voici la structure du projet :
+D:.
+│   .DS_Store
+│   .gitattributes
+│   .gitignore
+│   Examen Projet Final - S4 Info et Design.pdf
+│   index.html
+│   
+├───prompts
+│       prompt-1.txt
+│       prompt-2.txt
+│
+├───public
+│   │   home.html
+│   │
+│   └───js
+│           ajax.js
+│
+├───sql
+│   │   script.sql
+│   │
+│   └───db
+│           tables.png
+│           tables.sql
+│
+└───ws
+    │   .htaccess
+    │   composer.json
+    │   composer.lock
+    │   index.php
+    │
+    ├───controllers
+    │       DepotController.php
+    │       EtudiantController.php
+    │       IndexController.php
+    │
+    ├───helpers
+    ├───inc
+    │       db.php
+    │
+    ├───models
+    │       Client.php
+    │       Departement.php
+    │       Depot.php
+    │       HistoriquePret.php
+    │       IndexModel.php
+    │       Pret.php
+    │       TypePret.php
+    │       User.php
+    │
+    ├───routes
+    │       depot_routes.php
+    │       EtudiantRoutes.php
+    │
+    └───vendor
+        │   autoload.php
+        │
+        ├───composer
+        │       autoload_classmap.php
+        │       autoload_files.php
+        │       autoload_namespaces.php
+        │       autoload_psr4.php
+        │       autoload_real.php
+        │       autoload_static.php
+        │       ClassLoader.php
+        │       installed.json
+        │       installed.php
+        │       InstalledVersions.php
+        │       LICENSE
+        │       platform_check.php
+        │
+        └───mikecao
+            └───flight
+                │   .gitignore
+                │   composer.json
+                │   index.php
+                │   LICENSE
+                │   README.md
+                │   VERSION
+                │
+                ├───flight
+                │   │   autoload.php
+                │   │   Engine.php
+                │   │   Flight.php
+                │   │
+                │   ├───core
+                │   │       Dispatcher.php
+                │   │       Loader.php
+                │   │
+                │   ├───net
+                │   │       Request.php
+                │   │       Response.php
+                │   │       Route.php
+                │   │       Router.php
+                │   │
+                │   ├───template
+                │   │       View.php
+                │   │
+                │   └───util
+                │           Collection.php
+                │           LegacyJsonSerializable.php
+                │
+                └───tests
+                    │   AutoloadTest.php
+                    │   DispatcherTest.php
+                    │   FilterTest.php
+                    │   FlightTest.php
+                    │   LoaderTest.php
+                    │   MapTest.php
+                    │   README.md
+                    │   RedirectTest.php
+                    │   RegisterTest.php
+                    │   RenderTest.php
+                    │   RequestTest.php
+                    │   RouterTest.php
+                    │   VariableTest.php
+                    │   ViewTest.php
+                    │
+                    ├───classes
+                    │       Factory.php
+                    │       Hello.php
+                    │       User.php
+                    │
+                    └───views
+                        │   hello.php
+                        │   world.html
+                        │
+                        └───layouts
+                                layout.php

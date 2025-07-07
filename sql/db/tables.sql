@@ -61,7 +61,7 @@ CREATE TABLE historique_pret (
     id_user INT NOT NULL,
     id_pret INT NOT NULL,
     etat ENUM('cree', 'valide', 'refuse') NOT NULL,
-    date_modif TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    date_modif DATETIME,
     FOREIGN KEY (id_user) REFERENCES user(id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (id_pret) REFERENCES pret(id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -73,7 +73,7 @@ CREATE TABLE depot (
     id_user INT NOT NULL,
     nom_investisseur VARCHAR(200) NOT NULL,
     montant DECIMAL(15,2) NOT NULL,
-    date_depot TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    date_depot DATETIME,
     description TEXT,
     FOREIGN KEY (id_user) REFERENCES user(id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
