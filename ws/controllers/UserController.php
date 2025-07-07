@@ -1,11 +1,11 @@
 <?php
 header('Content-Type: application/json');
-require '../models/User.php';
+require __DIR__.'/../models/User.php';
 
 class UserController {
     public static function checkLogin() {
         $user = User::checkUser($_POST['nom'],$_POST['password']);
-        $message='';
+        $message='Connexion reussie';
         if($user){
             $_SESSION['user'] = $user;
         }

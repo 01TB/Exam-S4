@@ -58,6 +58,5 @@
         public function setTaux($taux) { $this->taux = $taux; }
         public function setDateDemande($dateDemande) { $this->dateDemande = $dateDemande; }
         
-    
     }
 ?>

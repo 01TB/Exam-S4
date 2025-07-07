@@ -1,12 +1,7 @@
 <?php
 require 'vendor/autoload.php';
 require 'inc/db.php';
-$routes = [];
-
-foreach ($routes as $route) {
-    require 'routes/'.$route.'.php';
-}
-
-require 'routes';
+require 'routes/interet_routes.php';
+require 'routes/user_routes.php';
 
 Flight::start();

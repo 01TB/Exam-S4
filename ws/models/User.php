@@ -31,8 +31,8 @@
             $db = getDB();
             $stmt = $db->prepare("SELECT * FROM user WHERE nom=:nom AND password=:password");            
             
-            $stmt->bindParam(':nom',$nom);
-            $stmt->bindParam(':password',$password);
+            $stmt->bindParam(':nom',$nom,PDO::PARAM_STR);
+            $stmt->bindParam(':password',$password,PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
