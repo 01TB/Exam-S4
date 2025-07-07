@@ -88,6 +88,71 @@
             return $types;
         }
 
+        public function getMontantInteret(): float {
+            $interetAnnuel = $this->getMontantPret() * $this->getTaux();
+            return $interetAnnuel / $this->getDureeRemboursement();
+        }
+
+        /**
+         * Calcule le tableau d'amortissement complet du prêt
+         * @return array - Tableau des mensualités avec détail capital/intérêt
+         */
+        public function calculerTableauAmortissement(): array {
+            $tauxMensuel = $this->taux / 12 / 100;
+            $mensualite = $this->calculerMensualite();
+            $capitalRestant = $this->montantPret;
+            $tableau = [];
+            $date = new DateTime($this->dateValidation);
+
+            for ($mois = 1; $mois <= $this->dureeRemboursement; $mois++) {
+                $date->modify('+1 month');
+                $interetMensuel = $capitalRestant * $tauxMensuel;
+                $capitalRembourse = $mensualite - $interetMensuel;
+                
+                // Ajustement pour la dernière mensualité
+                if ($mois === $this->dureeRemboursement) {
+                    $capitalRembourse = $capitalRestant;
+                    $mensualite = $capitalRembourse + $interetMensuel;
+                }
+
+                $tableau[] = [
+                    'mois' => $mois,
+                    'date' => $date->format('Y-m-d'),
+                    'mensualite' => round($mensualite, 2),
+                    'capital' => round($capitalRembourse, 2),
+                    'interet' => round($interetMensuel, 2),
+                    'capital_restant' => round($capitalRestant - $capitalRembourse, 2)
+                ];
+
+                $capitalRestant -= $capitalRembourse;
+            }
+
+            return $tableau;
+        }
+
+        /**
+         * Calcule les intérêts pour un mois spécifique
+         * @param int $mois - Numéro du mois (1 à durée)
+         * @return float - Montant des intérêts
+         */
+        public function calculerInteretPourMois(int $mois): float {
+            if ($mois < 1 || $mois > $this->dureeRemboursement) {
+                throw new InvalidArgumentException("Mois invalide");
+            }
+
+            $tauxMensuel = $this->taux / 12 / 100;
+            $mensualite = $this->calculerMensualite();
+            $capitalRestant = $this->montantPret;
+
+            for ($m = 1; $m < $mois; $m++) {
+                $interet = $capitalRestant * $tauxMensuel;
+                $capitalRembourse = $mensualite - $interet;
+                $capitalRestant -= $capitalRembourse;
+            }
+
+            return round($capitalRestant * $tauxMensuel, 2);
+        }
+
         /**
          * Récupère un prêt par son ID
          * @param int $id - ID du prêt

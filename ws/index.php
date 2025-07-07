@@ -10,7 +10,9 @@ $routes = [
     'user_routes',
     'pret_routes',
     'interet_routes',
-    'type_pret_routes',
+    'interet_pret_periode_routes',
+    'remboursement_routes',
+    'pdf_routes'
 ];
 
 foreach ($routes as $route) {
