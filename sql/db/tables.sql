@@ -86,10 +86,22 @@ CREATE TABLE depot (
         ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
+-- Intérêt prêt période
 CREATE TABLE interet_pret_periode(
-    id_pret INT AUTO_INCREMENT PRIMARY KEY,
-    montant DECIMAL(10,2) NOT NULL,
+    id_pret INT NOT NULL,
+    montant DECIMAL(15,2) NOT NULL,
     mois INT NOT NULL,
     annee INT NOT NULL,
-    UNIQUE (id_pret,mois,annee)
+    UNIQUE (id_pret,mois,annee),
+    FOREIGN KEY (id_pret) REFERENCES pret(id)
+);
+
+-- Remboursement prêt
+CREATE TABLE remboursement(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_pret INT NOT NULL,
+    date_remboursement DATETIME NOT NULL,
+    mois_rembourse INT NOT NULL,
+    annee_rembourse INT NOT NULL,
+    montant_rembourse DECIMAL(15,2) NOT NULL
 );
