@@ -87,9 +87,10 @@ CREATE TABLE depot (
 );
 
 CREATE TABLE interet_pret_periode(
-    id_pret INT AUTO_INCREMENT PRIMARY KEY,
+    id_pret INT ,
     montant DECIMAL(10,2) NOT NULL,
     mois INT NOT NULL,
     annee INT NOT NULL,
-    UNIQUE (id_pret,mois,annee)
+    UNIQUE (id_pret,mois,annee),
+    FOREIGN KEY (id_pret) REFERENCES pret(id)
 );
