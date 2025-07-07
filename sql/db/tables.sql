@@ -39,6 +39,8 @@ CREATE TABLE user (
 CREATE TABLE pret (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_client INT NOT NULL,
+    id_user_demandeur INT NOT NULL,
+    id_user_validateur INT DEFAULT NULL,
     id_type_pret INT NOT NULL,
     montant_pret DECIMAL(15,2) NOT NULL,
     montant_remboursement_par_mois DECIMAL(15,2) NOT NULL,
@@ -46,7 +48,10 @@ CREATE TABLE pret (
     duree_remboursement INT NOT NULL,
     taux DECIMAL(5,2) NOT NULL,
     date_demande DATE NOT NULL,
+    date_validation DATE NOT NULL,
     FOREIGN KEY (id_client) REFERENCES client(id) ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY (id_user_demandeur) REFERENCES user(id) ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY (id_user_validateur) REFERENCES user(id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (id_type_pret) REFERENCES type_pret(id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
@@ -60,7 +65,6 @@ CREATE TABLE historique_pret (
     FOREIGN KEY (id_user) REFERENCES user(id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (id_pret) REFERENCES pret(id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
-
 
 
 -- Table des dépôts
