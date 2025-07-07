@@ -2,7 +2,8 @@
 require 'vendor/autoload.php';
 require 'inc/db.php';
 $routes = [
-    'depot_routes'
+    'depot_routes',
+    'type_pret_routes'
 ];
 
 foreach ($routes as $route) {
