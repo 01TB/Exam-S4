@@ -59,5 +59,17 @@
             User::delete($id);
             Flight::json(['message' => 'Utilisateur supprimé']);
         }
+
+        public static function checkLogin() {
+        $user = User::checkUser($_POST['nom'],$_POST['password']);
+        $message='Connexion reussie';
+        if($user){
+            $_SESSION['user'] = $user;
+        }
+        else{
+            $message = 'User not found!';
+        }
+        Flight::json($message);
+    }
     }
 ?>

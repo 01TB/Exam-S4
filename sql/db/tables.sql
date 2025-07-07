@@ -85,3 +85,11 @@ CREATE TABLE depot (
     FOREIGN KEY (id_user) REFERENCES user(id)
         ON DELETE RESTRICT ON UPDATE CASCADE
 );
+
+CREATE TABLE interet_pret_periode(
+    id_pret INT AUTO_INCREMENT PRIMARY KEY,
+    montant DECIMAL(10,2) NOT NULL,
+    mois INT NOT NULL,
+    annee INT NOT NULL,
+    UNIQUE (id_pret,mois,annee)
+);

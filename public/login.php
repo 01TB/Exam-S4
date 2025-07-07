@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>CPbank - Connexion</title>
-  <link rel="stylesheet" href="css/reception.css">
+  <link rel="stylesheet" href="css/finance.css">
 </head>
 
 <body>
@@ -18,25 +18,44 @@
     <form id="loginForm">
       <div>
         <label for="username">Nom d'utilisateur</label>
-        <input type="text" id="username" name="nom" required>
+        <input type="text" id="nom" name="nom" required>
       </div>
       <div>
         <label for="password">Mot de passe</label>
-        <input type="password" id="password" name="mdp" required>
+        <input type="password" id="password" name="password" required>
       </div>
       <button type="submit">Se connecter</button>
       <p class="error">Erreur de connexion</p>
       <p class="success">Connexion réussie</p>
     </form>
   </div>
+
+  <script src="js/ajax.js"></script>
+
   <script>
+
     document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      // Simulation d'une connexion (à remplacer par une vérification réelle)
-      setTimeout(() => {
-        document.querySelector('.success').style.display = 'block';
-        setTimeout(() => window.location.href = 'finance/finance.php', 1000);
-      }, 500);
+      const nom = document.getElementById('nom').value;
+      const password = document.getElementById('password').value;
+      const data = `nom=${encodeURIComponent(nom)}&password=${encodeURIComponent(password)}`;
+
+      ajax("POST", "/login", data, (response) => {
+        console.log("response:" + response)
+        if (response.success) {
+          alert("lalalala");
+          document.querySelector('.success').style.display = 'block';
+          setTimeout(() => window.location.href = 'finance/finance.php', 1000);
+        } else {
+          document.querySelector('.error').style.display = 'block';
+          document.querySelector('.error').textContent = response.message || 'Erreur de connexion';
+          setTimeout(() => document.querySelector('.error').style.display = 'none', 2000);
+        }
+      }, (error) => {
+        document.querySelector('.error').style.display = 'block';
+        document.querySelector('.error').textContent = 'Erreur: ' + error;
+        setTimeout(() => document.querySelector('.error').style.display = 'none', 2000);
+      });
     });
   </script>
 </body>
