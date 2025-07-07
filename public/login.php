@@ -43,7 +43,6 @@
       ajax("POST", "/login", data, (response) => {
         console.log("response:" + response)
         if (response.success) {
-          alert("lalalala");
           document.querySelector('.success').style.display = 'block';
           setTimeout(() => window.location.href = 'finance/finance.php', 1000);
         } else {
