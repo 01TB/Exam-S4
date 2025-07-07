@@ -9,7 +9,6 @@
         private $montantRemboursementParMois;
         private $montantTotalRemboursement;
         private $dureeRemboursement;
-
         private $status;
         private $taux;
         private $dateDemande;
