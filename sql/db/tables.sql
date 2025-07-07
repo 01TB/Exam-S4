@@ -1,7 +1,6 @@
 -- Base de données pour établissement financier
 -- MySQL 11
 
-
 -- Table des départements
 CREATE TABLE departement (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -22,7 +21,8 @@ CREATE TABLE user (
     nom VARCHAR(100) NOT NULL,
     prenom VARCHAR(100) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    FOREIGN KEY (id_departement) REFERENCES departement(id) ON DELETE RESTRICT ON UPDATE CASCADE
+    FOREIGN KEY (id_departement) REFERENCES departement(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- Table des types de prêts
@@ -39,35 +39,40 @@ CREATE TABLE type_pret (
 -- Table des prêts accordés
 CREATE TABLE pret (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    id_client INT NOT NULL, --- inséré
-    id_user_demandeur INT NOT NULL, --- inséré
+    id_client INT NOT NULL,
+    id_user_demandeur INT NOT NULL,
     id_user_validateur INT DEFAULT NULL,
-    id_type_pret INT NOT NULL, --- inséré
-    montant_pret DECIMAL(15,2) NOT NULL, --- inséré
-    montant_remboursement_par_mois DECIMAL(15,2) NOT NULL, --- calculé
-    montant_total_remboursement DECIMAL(15,2) NOT NULL, --- calculé
-    duree_remboursement INT NOT NULL, --- inséré
+    id_type_pret INT NOT NULL,
+    montant_pret DECIMAL(15,2) NOT NULL,
+    montant_remboursement_par_mois DECIMAL(15,2) NOT NULL,
+    montant_total_remboursement DECIMAL(15,2) NOT NULL,
+    duree_remboursement INT NOT NULL,
     status ENUM('cree', 'valide', 'refuse') DEFAULT 'cree',
-    taux DECIMAL(5,2) NOT NULL, --- inséré 
-    date_demande DATE NOT NULL, --- inséré
+    taux DECIMAL(5,2) NOT NULL,
+    date_demande DATE NOT NULL,
     date_validation DATE DEFAULT NULL,
-    FOREIGN KEY (id_client) REFERENCES client(id) ON DELETE RESTRICT ON UPDATE CASCADE,
-    FOREIGN KEY (id_user_demandeur) REFERENCES user(id) ON DELETE RESTRICT ON UPDATE CASCADE,
-    FOREIGN KEY (id_user_validateur) REFERENCES user(id) ON DELETE RESTRICT ON UPDATE CASCADE,
-    FOREIGN KEY (id_type_pret) REFERENCES type_pret(id) ON DELETE RESTRICT ON UPDATE CASCADE
+    FOREIGN KEY (id_client) REFERENCES client(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY (id_user_demandeur) REFERENCES user(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY (id_user_validateur) REFERENCES user(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY (id_type_pret) REFERENCES type_pret(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
--- Table de l'historique des pret
+-- Table de l'historique des prêts
 CREATE TABLE historique_pret (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_user INT NOT NULL,
     id_pret INT NOT NULL,
     etat ENUM('cree', 'valide', 'refuse') NOT NULL,
     date_modif DATETIME,
-    FOREIGN KEY (id_user) REFERENCES user(id) ON DELETE RESTRICT ON UPDATE CASCADE,
-    FOREIGN KEY (id_pret) REFERENCES pret(id) ON DELETE RESTRICT ON UPDATE CASCADE
+    FOREIGN KEY (id_user) REFERENCES user(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY (id_pret) REFERENCES pret(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE
 );
-
 
 -- Table des dépôts
 CREATE TABLE depot (
@@ -77,5 +82,6 @@ CREATE TABLE depot (
     montant DECIMAL(15,2) NOT NULL,
     date_depot DATETIME,
     description TEXT,
-    FOREIGN KEY (id_user) REFERENCES user(id) ON DELETE RESTRICT ON UPDATE CASCADE
+    FOREIGN KEY (id_user) REFERENCES user(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE
 );
