@@ -1,0 +1,36 @@
+Crée les fonctions de CRUD de Departement, Client, HistoriquePret, User aussi.
+Mets au points leur modèle ... .php, ...Controller.php et ..._routes.php pour cela.
+Fais usage de leur entité respective.
+
+
+Voici les différentes tables : 
+CREATE TABLE departement (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- Table des clients
+CREATE TABLE client (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_departement INT NOT NULL,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    FOREIGN KEY (id_departement) REFERENCES departement(id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+CREATE TABLE historique_pret (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_user INT NOT NULL,
+    id_pret INT NOT NULL,
+    etat ENUM('cree', 'valide', 'refuse') NOT NULL,
+    date_modif DATETIME,
+    FOREIGN KEY (id_user) REFERENCES user(id) ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY (id_pret) REFERENCES pret(id) ON DELETE RESTRICT ON UPDATE CASCADE
+);

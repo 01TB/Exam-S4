@@ -1,4 +1,6 @@
 <?php
+    require_once __DIR__ . '/../inc/db.php';
+
     class HistoriquePret {
         private $id;
         private $idUser;
@@ -21,10 +23,64 @@
         public function getEtat() { return $this->etat; }
         public function getDateModif() { return $this->dateModif; }
 
-        // Setters
-        public function setIdUser($idUser) { $this->idUser = $idUser; }
-        public function setIdPret($idPret) { $this->idPret = $idPret; }
-        public function setEtat($etat) { $this->etat = $etat; }
-        public function setDateModif($dateModif) { $this->dateModif = $dateModif; }
+        // CRUD Operations
+        public static function getAll() {
+            $db = getDB();
+            $stmt = $db->query("SELECT * FROM historique_pret");
+            $historiques = [];
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $historiques[] = new HistoriquePret(
+                    $row['id'],
+                    $row['id_user'],
+                    $row['id_pret'],
+                    $row['etat'],
+                    $row['date_modif']
+                );
+            }
+            return $historiques;
+        }
+
+        public static function getById($id) {
+            $db = getDB();
+            $stmt = $db->prepare("SELECT * FROM historique_pret WHERE id = ?");
+            $stmt->execute([$id]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $row ? new HistoriquePret(
+                $row['id'],
+                $row['id_user'],
+                $row['id_pret'],
+                $row['etat'],
+                $row['date_modif']
+            ) : null;
+        }
+
+        public static function create(HistoriquePret $historique) {
+            $db = getDB();
+            $stmt = $db->prepare("INSERT INTO historique_pret (id_user, id_pret, etat, date_modif) VALUES (?, ?, ?, ?)");
+            $stmt->execute([
+                $historique->getIdUser(),
+                $historique->getIdPret(),
+                $historique->getEtat(),
+                $historique->getDateModif()
+            ]);
+            return $db->lastInsertId();
+        }
+
+        public static function getByPretId($idPret) {
+            $db = getDB();
+            $stmt = $db->prepare("SELECT * FROM historique_pret WHERE id_pret = ? ORDER BY date_modif DESC");
+            $stmt->execute([$idPret]);
+            $historiques = [];
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $historiques[] = new HistoriquePret(
+                    $row['id'],
+                    $row['id_user'],
+                    $row['id_pret'],
+                    $row['etat'],
+                    $row['date_modif']
+                );
+            }
+            return $historiques;
+        }
     }
 ?>
