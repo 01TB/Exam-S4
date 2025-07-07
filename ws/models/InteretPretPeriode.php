@@ -103,14 +103,20 @@ class InteretPretPeriode {
         $stmt->execute([$idPret, $mois, $annee]);
     }
 
-    /**
-     * Calcule les intérêts pour un prêt pour une période donnée
-     */
     public static function calculerInterets(Pret $pret, $mois, $annee): float {
-        $tauxMensuel = $pret->getTaux() / 12 / 100;
-        $capitalRestant = self::calculerCapitalRestant($pret, $mois, $annee);
-        return round($capitalRestant * $tauxMensuel, 2);
+        // Convertir la période (mois/année) en numéro de mois depuis le début
+        $datePret = new DateTime($pret->getDateValidation());
+        $dateCible = new DateTime("$annee-$mois-01");
+        $diff = $datePret->diff($dateCible);
+        $moisEcoules = $diff->y * 12 + $diff->m;
+
+        if ($moisEcoules < 0 || $moisEcoules >= $pret->getDureeRemboursement()) {
+            throw new InvalidArgumentException("Période invalide pour ce prêt");
+        }
+
+        return $pret->calculerInteretPourMois($moisEcoules + 1);
     }
+    
 
     /**
      * Calcule le capital restant dû pour un prêt à une période donnée
