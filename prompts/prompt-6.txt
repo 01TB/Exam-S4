@@ -1,0 +1,4 @@
+Crée une fonction dans l'entité Depot permettant de calculer la quantité d'argent restant 
+au sein de l'établissement financier.
+A une date donnée :
+    Somme des dépôt - Somme des prêt valide

@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__ . '../models/Depot.php';
+    require_once __DIR__ . '/../models/Depot.php';
 
     class DepotController {
         public static function getAll() {

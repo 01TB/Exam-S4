@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '../controllers/UserController.php';
+require_once __DIR__ . '/../controllers/UserController.php';
 
 Flight::route('GET /users', ['UserController', 'getAll']);
 Flight::route('GET /users/@id', ['UserController', 'getById']);

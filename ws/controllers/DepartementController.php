@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__ . '../models/Departement.php';
+    require_once __DIR__ . '/../models/Departement.php';
 
     class DepartementController {
         public static function getAll() {

@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '../controllers/TypePretController.php';
+require_once __DIR__ . '/../controllers/TypePretController.php';
 
 Flight::route('GET /types-pret', ['TypePretController', 'getAll']);
 Flight::route('GET /types-pret/@id', ['TypePretController', 'getById']);

@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__ . '../inc/db.php';
+    require_once __DIR__ . '/../inc/db.php';
 
     class Depot {
         private $id;
@@ -100,5 +100,35 @@
             $stmt = $db->prepare("DELETE FROM depot WHERE id = ?");
             $stmt->execute([$id]);
         }
+
+        /**
+         * Calcule le solde disponible de l'établissement financier
+         * @param string $date - Date au format YYYY-MM-DD
+         * @return float - Montant disponible (dépôts - prêts validés)
+         */
+        public static function calculerSoldeDisponible(string $date): float {
+            $db = getDB();
+            
+            // Calcul du total des dépôts
+            $stmtDepots = $db->prepare("SELECT SUM(montant) as total_depots 
+                                    FROM depot 
+                                    WHERE date_depot <= ?");
+            $stmtDepots->execute([$date]);
+            $totalDepots = (float)$stmtDepots->fetch(PDO::FETCH_ASSOC)['total_depots'] ?? 0;
+            
+            // Calcul du total des prêts validés
+            $stmtPrets = $db->prepare("SELECT SUM(montant_pret) as total_prets 
+                                    FROM pret 
+                                    WHERE status = 'valide' 
+                                    AND date_validation <= ?");
+            $stmtPrets->execute([$date]);
+            $totalPrets = (float)$stmtPrets->fetch(PDO::FETCH_ASSOC)['total_prets'] ?? 0;
+            
+            return round($totalDepots - $totalPrets, 2);
+        }
+
+        // Calcul du solde au 31 décembre 2023
+        // $solde = Depot::calculerSoldeDisponible('2023-12-31');
+        // echo "Solde disponible : " . number_format($solde, 2, ',', ' ') . " €";
     }
 ?>
