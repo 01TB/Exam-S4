@@ -111,7 +111,7 @@
         )}&age=${age}`;
 
         if (id) {
-          ajax("PUT", `/etudiants/${id}`, data, () => {
+          ajax("POST", `/etudiants/${id}`, data, () => {
             resetForm();
             chargerEtudiants();
           });

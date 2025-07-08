@@ -16,8 +16,8 @@ $routes = [
 ];
 
 foreach ($routes as $route) {
-    require 'routes/'.$route.'.php';
+    require 'routes/' . $route . '.php';
 }
-
+session_start();
 
 Flight::start();

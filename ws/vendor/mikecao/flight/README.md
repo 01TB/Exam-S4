@@ -1,6 +1,6 @@
 # What is Flight?
 
-Flight is a fast, simple, extensible framework for PHP. Flight enables you to 
+Flight is a fast, simple, extensible framework for PHP. Flight enables you to
 quickly and easily build RESTful web applications.
 
 ```php
@@ -33,12 +33,12 @@ If you're using [Composer](https://getcomposer.org/), you can run the following 
 composer require mikecao/flight
 ```
 
-OR you can [download](https://github.com/mikecao/flight/archive/master.zip) them directly 
+OR you can [download](https://github.com/mikecao/flight/archive/master.zip) them directly
 and extract them to your web directory.
 
 2\. Configure your webserver.
 
-For *Apache*, edit your `.htaccess` file with the following:
+For _Apache_, edit your `.htaccess` file with the following:
 
 ```
 RewriteEngine On
@@ -49,7 +49,7 @@ RewriteRule ^(.*)$ index.php [QSA,L]
 
 **Note**: If you need to use flight in a subdirectory add the line `RewriteBase /subdir/` just after `RewriteEngine On`.
 
-For *Nginx*, add the following to your server declaration:
+For _Nginx_, add the following to your server declaration:
 
 ```
 server {
@@ -58,6 +58,7 @@ server {
     }
 }
 ```
+
 3\. Create your `index.php` file.
 
 First include the framework.
@@ -134,7 +135,7 @@ class Greeting
 
 $greeting = new Greeting();
 
-Flight::route('/', array($greeting, 'hello')); 
+Flight::route('/', array($greeting, 'hello'));
 ```
 
 Routes are matched in the order they are defined. The first route to match a
@@ -474,6 +475,7 @@ Flight::set('id', 123);
 // Elsewhere in your application
 $id = Flight::get('id');
 ```
+
 To see if a variable has been set you can do:
 
 ```php
@@ -589,15 +591,16 @@ If the template files looks like this:
 ```
 
 The output would be:
+
 ```html
 <html>
-<head>
-<title>Home Page</title>
-</head>
-<body>
-<h1>Hello</h1>
-<div>World</div>
-</body>
+  <head>
+    <title>Home Page</title>
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <div>World</div>
+  </body>
 </html>
 ```
 
@@ -635,6 +638,7 @@ Flight::map('render', function($template, $data){
     Flight::view()->display($template);
 });
 ```
+
 # Error Handling
 
 ## Errors and Exceptions
@@ -702,7 +706,7 @@ The request object provides the following properties:
 ```
 url - The URL being requested
 base - The parent subdirectory of the URL
-method - The request method (GET, POST, PUT, DELETE)
+method - The request method (GET, POST, POST, DELETE)
 referrer - The referrer URL
 ip - IP address of the client
 ajax - Whether the request is an AJAX request
@@ -737,7 +741,7 @@ $id = Flight::request()->query->id;
 
 ## RAW Request Body
 
-To get the raw HTTP request body, for example when dealing with PUT requests, you can do:
+To get the raw HTTP request body, for example when dealing with POST requests, you can do:
 
 ```php
 $body = Flight::request()->getBody();
@@ -833,7 +837,6 @@ my_func({"id":123});
 
 If you don't pass in a query parameter name it will default to `jsonp`.
 
-
 # Configuration
 
 You can customize certain behaviors of Flight by setting configuration values
@@ -893,7 +896,6 @@ Flight::jsonp($data, [$param], [$code], [$encode], [$charset], [$option]) // Sen
 ```
 
 Any custom methods added with `map` and `register` can also be filtered.
-
 
 # Framework Instance
 

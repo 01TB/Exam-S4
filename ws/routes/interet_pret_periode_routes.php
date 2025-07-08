@@ -14,7 +14,7 @@ Flight::route('GET /prets/@id/interets/calculer/@mois/@annee', ['InteretPretPeri
 Flight::route('POST /interets', ['InteretPretPeriodeController', 'create']);
 
 // Met à jour un intérêt existant
-Flight::route('PUT /prets/@id/interets/@mois/@annee', ['InteretPretPeriodeController', 'update']);
+Flight::route('POST /prets/@id/interets/@mois/@annee', ['InteretPretPeriodeController', 'update']);
 
 // Supprime un intérêt
 Flight::route('DELETE /prets/@id/interets/@mois/@annee', ['InteretPretPeriodeController', 'delete']);

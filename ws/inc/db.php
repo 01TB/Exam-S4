@@ -1,7 +1,8 @@
 <?php
-function getDB() {
+function getDB()
+{
     $host = 'localhost';
-    $dbname = 'tp_flight';
+    $dbname = 'pret_bancaire';
     $username = 'root';
     $password = ' ';
 
