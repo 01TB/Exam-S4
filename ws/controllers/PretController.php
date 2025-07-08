@@ -20,6 +20,7 @@ class PretController
             $data->duree_remboursement,
             null,
             $data->taux,
+            $data->assurance,
             $data->date_demande,
             null
         );

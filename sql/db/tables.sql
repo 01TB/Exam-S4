@@ -49,6 +49,7 @@ CREATE TABLE pret (
     duree_remboursement INT NOT NULL,
     status ENUM('cree', 'valide', 'refuse') DEFAULT 'cree',
     taux DECIMAL(5,2) NOT NULL,
+    assurance DECIMAL(2,2) NOT NULL,
     date_demande DATE NOT NULL,
     date_validation DATE DEFAULT NULL,
     FOREIGN KEY (id_client) REFERENCES client(id)

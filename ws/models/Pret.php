@@ -13,12 +13,13 @@
         private $dureeRemboursement;
         private $status;
         private $taux;
+        private $assurance;
         private $dateDemande;
         private $dateValidation;
 
         public function __construct($id, $idClient, $idUserDemandeur, $idUserValidateur, $idTypePret, 
                                     $montantPret, $montantRemboursementParMois, $montantTotalRemboursement, 
-                                    $dureeRemboursement, $status, $taux, $dateDemande, $dateValidation) {
+                                    $dureeRemboursement, $status, $taux, $assurance, $dateDemande, $dateValidation) {
             $this->id = $id;
             $this->idClient = $idClient;
             $this->idUserDemandeur = $idUserDemandeur;
@@ -30,6 +31,7 @@
             $this->dureeRemboursement = $dureeRemboursement;
             $this->status = $status;
             $this->taux = $taux;
+            $this->assurance = $assurance;
             $this->dateDemande = $dateDemande;
             $this->$dateValidation = $dateValidation;
         }
@@ -46,6 +48,7 @@
         public function getDureeRemboursement() { return $this->dureeRemboursement; }
         public function getStatus(){return $this->status;}
         public function getTaux() { return $this->taux; }
+        public function getAssurance() { return $this->assurance; }
         public function getDateDemande() { return $this->dateDemande; }
         public function getDateValidation() { return $this->dateValidation; }
 
@@ -60,6 +63,7 @@
         public function setDureeRemboursement($dureeRemboursement) { $this->dureeRemboursement = $dureeRemboursement; }
         public function setStatus($status){$this->status = $status;}
         public function setTaux($taux) { $this->taux = $taux; }
+        public function setAssurance($assurance) { $this->assurance = $assurance; }
         public function setDateDemande($dateDemande) { $this->dateDemande = $dateDemande; }
         public function setDateValidation($dateValidation) { $this->dateValidation = $dateValidation; }
         
@@ -81,6 +85,7 @@
                     $row['duree_remboursement'],
                     $row['status'],
                     $row['taux'],
+                    $row['assurance'],
                     $row['date_demande'],
                     $row['date_validation'],
                 );
@@ -177,6 +182,7 @@
                     $row['duree_remboursement'],
                     $row['status'],
                     $row['taux'],
+                    $row['assurance'],
                     $row['date_demande'],
                     $row['date_validation']
                 );
@@ -197,8 +203,9 @@
                                                            montant_pret, 
                                                            duree_remboursement,
                                                            taux,
+                                                           assurance,
                                                            date_demande) 
-                                VALUES (?, ?, ?, ?, ?, ?, ?)");
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->execute([
                 $pret->getIdClient(),
                 $pret->getIdUserDemandeur(),
@@ -206,6 +213,7 @@
                 $pret->getMontantPret(),
                 $pret->getDureeRemboursement(),
                 $pret->getTaux(),
+                $pret->getAssurance(),
                 $pret->getDateDemande(),
             ]);
             return $db->lastInsertId();

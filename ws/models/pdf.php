@@ -13,26 +13,25 @@
             }
 
             // Simuler les données client et type de prêt (à remplacer par un appel à votre base de données)
-            $clients = [
-                1 => ['nom' => 'Dupont', 'prenom' => 'Jean'],
-                2 => ['nom' => 'Martin', 'prenom' => 'Sophie']
-            ];
+            $clients = Client::getAll();
+            // $clients = [
+            //     1 => ['nom' => 'Dupont', 'prenom' => 'Jean'],
+            //     2 => ['nom' => 'Martin', 'prenom' => 'Sophie']
+            // ];
 
-            $typesPret = [
-                1 => ['nom' => 'Prêt personnel', 'taux' => 5.0],
-                2 => ['nom' => 'Prêt automobile', 'taux' => 7.0],
-                3 => ['nom' => 'Prêt immobilier', 'taux' => 3.5]
-            ];
+            $typesPret = TypePret::getAll();
 
             $clientId = (int)$data['id_client'];
             $typePretId = (int)$data['id_type_pret'];
 
-            if (!isset($clients[$clientId])) {
+            // if (!isset($clients[$clientId])) {
+            if (Client::getById($clientId)==null) {
                 header('Content-Type: application/json');
                 return ['error' => 'Client non trouvé'];
             }
 
-            if (!isset($typesPret[$typePretId])) {
+            // if (!isset($typesPret[$typePretId])) {
+            if (TypePret::getById($typePretId)==null) {
                 header('Content-Type: application/json');
                 return['error' => 'Type de prêt non trouvé'];
             }
@@ -44,8 +43,10 @@
             $dateDebut = $data['date_demande'] ?? date('Y-m-d');
 
             $pdfData = LoanCalculator::preparePdfData(
-                $clients[$clientId],
-                $typesPret[$typePretId],
+                // $clients[$clientId],
+                Client::getById($clientId),
+                // $typesPret[$typePretId],
+                TypePret::getById($typePretId),
                 $montant,
                 $duree,
                 $taux,
