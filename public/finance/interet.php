@@ -17,9 +17,9 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F5F6F7;
+            background-color: #000000;
             /* Off-White */
-            color: #101820;
+            color: #ffffff;
             /* Near Black */
         }
 
@@ -71,21 +71,21 @@
         .success {
             background-color: #007CBA;
             /* Light Blue */
-            color: #F5F6F7;
+            color: #000000;
             /* Off-White */
         }
 
         .error {
             background-color: #A0B2B8;
             /* Light Gray */
-            color: #101820;
+            color: #ffffff;
             /* Near Black */
         }
 
         .tooltip {
             position: absolute;
-            background-color: #101820;
-            color: #F5F6F7;
+            background-color: #ffffff;
+            color: #000000;
             padding: 5px 10px;
             border-radius: 4px;
             font-size: 12px;
@@ -108,12 +108,12 @@
                         </svg>
                     </label>
                     <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#A0B2B8] rounded-box w-52">
-                        <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Accueil</a></li>
-                        <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Depot</a></li>
-                        <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Interet</a></li>
-                        <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Type pret</a></li>
-                        <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Validation Prêts</a></li>
-                        <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Déconnexion</a></li>
+                        <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Accueil</a></li>
+                        <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Depot</a></li>
+                        <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Interet</a></li>
+                        <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Type pret</a></li>
+                        <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Validation Prêts</a></li>
+                        <li><a href="/EXAM-S4/public/login.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Déconnexion</a></li>
                     </ul>
                 </div>
                 <div class="flex items-center">
@@ -125,12 +125,13 @@
             </div>
             <div class="navbar-center hidden lg:flex">
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#A0B2B8] rounded-box w-52">
-                    <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Accueil</a></li>
-                    <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Depot</a></li>
-                    <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Interet</a></li>
-                    <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Type pret</a></li>
-                    <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Validation Prêts</a></li>
-                    <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Déconnexion</a></li>
+                    <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Accueil</a></li>
+                    <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Depot</a></li>
+                    <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Interet</a></li>
+                    <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Type pret</a></li>
+                    <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Validation Prêts</a></li>
+                    <li><a href="/EXAM-S4/public/login.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Déconnexion</a></li><li><a href="/EXAM-S4/public/finance/montantDispo.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Montant dispo</a></li>
+                        <li><a href="/EXAM-S4/public/finance/remboursement.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Remboursement</a></li>
                 </ul>
             </div>
             <div class="navbar-end">
@@ -142,11 +143,11 @@
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8 max-w-6xl">
         <h2 class="text-3xl font-['Playfair_Display'] text-[#003A70] mb-6 fade-in">Tableau des Intérêts</h2>
-        <div class="card bg-[#F5F6F7] p-6 shadow-lg rounded-lg mb-8 fade-in">
+        <div class="card bg-[#000000] p-6 shadow-lg rounded-lg mb-8 fade-in">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div class="form-control">
                     <label class="label" for="mois_debut">
-                        <span class="label-text text-[#101820] font-['Playfair_Display']">Mois début</span>
+                        <span class="label-text text-[#ffffff] font-['Playfair_Display']">Mois début</span>
                         <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
@@ -169,7 +170,7 @@
                 </div>
                 <div class="form-control">
                     <label class="label" for="mois_fin">
-                        <span class="label-text text-[#101820] font-['Playfair_Display']">Mois fin</span>
+                        <span class="label-text text-[#ffffff] font-['Playfair_Display']">Mois fin</span>
                         <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
@@ -192,7 +193,7 @@
                 </div>
                 <div class="form-control">
                     <label class="label" for="annee_debut">
-                        <span class="label-text text-[#101820] font-['Playfair_Display']">Année début</span>
+                        <span class="label-text text-[#ffffff] font-['Playfair_Display']">Année début</span>
                         <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
@@ -201,7 +202,7 @@
                 </div>
                 <div class="form-control">
                     <label class="label" for="annee_fin">
-                        <span class="label-text text-[#101820] font-['Playfair_Display']">Année fin</span>
+                        <span class="label-text text-[#ffffff] font-['Playfair_Display']">Année fin</span>
                         <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
@@ -210,13 +211,13 @@
                 </div>
             </div>
             <div class="flex gap-4">
-                <button onclick="chargerInterets()" class="btn bg-[#003A70] text-[#F5F6F7] hover:bg-[#007CBA] flex items-center">
+                <button onclick="chargerInterets()" class="btn bg-[#003A70] text-[#ffffff] hover:bg-[#007CBA] flex items-center">
                     <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                     Filtrer
                 </button>
-                <button onclick="reinitialiserFiltres()" class="btn bg-[#003A70] text-[#F5F6F7] hover:bg-[#007CBA] flex items-center">
+                <button onclick="reinitialiserFiltres()" class="btn bg-[#003A70] text-[#ffffff] hover:bg-[#007CBA] flex items-center">
                     <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                     </svg>
@@ -227,7 +228,7 @@
         </div>
 
         <!-- Interests Table -->
-        <div class="table-container card bg-[#F5F6F7] p-6 shadow-lg rounded-lg mb-8 fade-in">
+        <div class="table-container card bg-[#000000] p-6 shadow-lg rounded-lg mb-8 fade-in">
             <div class="overflow-x-auto">
                 <table id="table-interets" class="table w-full border-collapse">
                     <thead>
@@ -264,14 +265,14 @@
         </div>
 
         <!-- D3.js Graph -->
-        <div class="graph-container card bg-[#F5F6F7] p-6 shadow-lg rounded-lg fade-in">
+        <div class="graph-container card bg-[#000000] p-6 shadow-lg rounded-lg fade-in">
             <h3 class="text-xl font-['Playfair_Display'] text-[#003A70] mb-4">Visualisation des Intérêts</h3>
             <svg id="interest-graph" width="100%" height="400"></svg>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#F5F6F7] text-[#101820] text-center py-4 font-['Inter']">
+    <footer class="bg-[#000000] text-[#ffffff] text-center py-4 font-['Inter']">
         <p>© 2025 CPbank. Tous droits réservés.</p>
     </footer>
 
@@ -323,7 +324,7 @@
             } else {
                 data.forEach(interet => {
                     const tr = document.createElement("tr");
-                    tr.className = "hover:bg-[#007CBA] hover:text-[#F5F6F7] transition-colors";
+                    tr.className = "hover:bg-[#007CBA] hover:text-[#ffffff] transition-colors";
                     tr.innerHTML = `
                         <td class="font-['Inter']">${getNomMois(interet.mois)}</td>
                         <td class="font-['Inter']">${interet.annee}</td>
@@ -366,20 +367,20 @@
                 .selectAll("text")
                 .attr("transform", "rotate(-45)")
                 .style("text-anchor", "end")
-                .style("fill", "#101820")
+                .style("fill", "#ffffff")
                 .style("font-family", "Inter, sans-serif");
 
             g.append("g")
                 .attr("class", "y-axis")
                 .call(d3.axisLeft(y).tickFormat(d => `${d} €`))
-                .style("fill", "#101820")
+                .style("fill", "#ffffff")
                 .style("font-family", "Inter, sans-serif");
 
             g.append("text")
                 .attr("x", width / 2)
                 .attr("y", height + margin.bottom - 10)
                 .style("text-anchor", "middle")
-                .style("fill", "#101820")
+                .style("fill", "#ffffff")
                 .style("font-family", "Inter, sans-serif")
                 .text("Mois et Année");
 
@@ -388,7 +389,7 @@
                 .attr("x", -height / 2)
                 .attr("y", -margin.left + 20)
                 .style("text-anchor", "middle")
-                .style("fill", "#101820")
+                .style("fill", "#ffffff")
                 .style("font-family", "Inter, sans-serif")
                 .text("Montant des Intérêts (€)");
 

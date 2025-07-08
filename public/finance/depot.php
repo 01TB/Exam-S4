@@ -15,9 +15,9 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F5F6F7;
+            background-color: #000000;
             /* Off-White */
-            color: #101820;
+            color: #ffffff;
             /* Near Black */
         }
 
@@ -67,14 +67,14 @@
         .success {
             background-color: #007CBA;
             /* Light Blue */
-            color: #F5F6F7;
+            color: #000000;
             /* Off-White */
         }
 
         .error {
             background-color: #A0B2B8;
             /* Light Gray */
-            color: #101820;
+            color: #ffffff;
             /* Near Black */
         }
     </style>
@@ -92,12 +92,12 @@
                         </svg>
                     </label>
                     <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#A0B2B8] rounded-box w-52">
-                        <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Accueil</a></li>
-                        <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Depot</a></li>
-                        <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Interet</a></li>
-                        <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Type pret</a></li>
-                        <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Validation Prêts</a></li>
-                        <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Déconnexion</a></li>
+                        <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Accueil</a></li>
+                        <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Depot</a></li>
+                        <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Interet</a></li>
+                        <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Type pret</a></li>
+                        <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Validation Prêts</a></li>
+                        <li><a href="/EXAM-S4/public/login.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Déconnexion</a></li>
                     </ul>
                 </div>
                 <div class="flex items-center">
@@ -109,12 +109,13 @@
             </div>
             <div class="navbar-center hidden lg:flex">
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#A0B2B8] rounded-box w-52">
-                    <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Accueil</a></li>
-                    <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Depot</a></li>
-                    <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Interet</a></li>
-                    <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Type pret</a></li>
-                    <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Validation Prêts</a></li>
-                    <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Déconnexion</a></li>
+                    <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Accueil</a></li>
+                    <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Depot</a></li>
+                    <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Interet</a></li>
+                    <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Type pret</a></li>
+                    <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Validation Prêts</a></li>
+                    <li><a href="/EXAM-S4/public/login.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Déconnexion</a></li><li><a href="/EXAM-S4/public/finance/montantDispo.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Montant dispo</a></li>
+                        <li><a href="/EXAM-S4/public/finance/remboursement.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Remboursement</a></li>
                 </ul>
             </div>
             <div class="navbar-end">
@@ -126,13 +127,13 @@
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8 max-w-6xl">
         <h2 class="text-3xl font-['Playfair_Display'] text-[#003A70] mb-6 fade-in">Gestion des dépôts</h2>
-        <form id="depositForm" class="card bg-[#F5F6F7] p-6 shadow-lg rounded-lg mb-8 fade-in">
+        <form id="depositForm" class="card bg-[#000000] p-6 shadow-lg rounded-lg mb-8 fade-in">
             <input type="hidden" id="id" name="id">
             <input type="hidden" id="id_user" name="id_user" value="1">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div class="form-control">
                     <label class="label" for="nom_investisseur">
-                        <span class="label-text text-[#101820] font-['Playfair_Display']">Nom de l'investisseur</span>
+                        <span class="label-text text-[#ffffff] font-['Playfair_Display']">Nom de l'investisseur</span>
                         <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                         </svg>
@@ -141,7 +142,7 @@
                 </div>
                 <div class="form-control">
                     <label class="label" for="montant">
-                        <span class="label-text text-[#101820] font-['Playfair_Display']">Montant (€)</span>
+                        <span class="label-text text-[#ffffff] font-['Playfair_Display']">Montant (€)</span>
                         <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
@@ -152,7 +153,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div class="form-control">
                     <label class="label" for="date_depot">
-                        <span class="label-text text-[#101820] font-['Playfair_Display']">Date du dépôt</span>
+                        <span class="label-text text-[#ffffff] font-['Playfair_Display']">Date du dépôt</span>
                         <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
@@ -161,7 +162,7 @@
                 </div>
                 <div class="form-control">
                     <label class="label" for="description">
-                        <span class="label-text text-[#101820] font-['Playfair_Display']">Description</span>
+                        <span class="label-text text-[#ffffff] font-['Playfair_Display']">Description</span>
                         <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                         </svg>
@@ -169,7 +170,7 @@
                     <textarea id="description" name="description" placeholder="Description" class="textarea textarea-bordered border-[#A0B2B8] focus:border-[#007CBA]"></textarea>
                 </div>
             </div>
-            <button type="button" onclick="ajouterOuModifierDepot()" class="btn bg-[#003A70] text-[#F5F6F7] hover:bg-[#007CBA] flex items-center">
+            <button type="button" onclick="ajouterOuModifierDepot()" class="btn bg-[#003A70] text-[#ffffff] hover:bg-[#007CBA] flex items-center">
                 <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
@@ -180,7 +181,7 @@
         </form>
 
         <!-- Deposits Table -->
-        <div class="table-container card bg-[#F5F6F7] p-6 shadow-lg rounded-lg fade-in">
+        <div class="table-container card bg-[#000000] p-6 shadow-lg rounded-lg fade-in">
             <div class="overflow-x-auto">
                 <table id="table-depots" class="table w-full border-collapse">
                     <thead>
@@ -242,7 +243,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#F5F6F7] text-[#101820] text-center py-4 font-['Inter']">
+    <footer class="bg-[#000000] text-[#ffffff] text-center py-4 font-['Inter']">
         <p>© 2025 CPbank. Tous droits réservés.</p>
     </footer>
 
@@ -254,7 +255,7 @@
                 tbody.innerHTML = "";
                 data.forEach((d) => {
                     const tr = document.createElement("tr");
-                    tr.className = "hover:bg-[#007CBA] hover:text-[#F5F6F7] transition-colors";
+                    tr.className = "hover:bg-[#007CBA] text-[#ffffff] transition-colors";
                     tr.innerHTML = `
                         <td class="font-['Inter']">${d.id}</td>
                         <td class="font-['Inter']">${d.nom_investisseur}</td>

@@ -135,11 +135,11 @@
 </style>
 
 <main>
-    <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Accueil</a></li>
-    <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Depot</a></li>
-    <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Interet</a></li>
-    <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Type pret</a></li>
-    <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">validation_pret</a></li>
+    <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Accueil</a></li>
+    <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Depot</a></li>
+    <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Interet</a></li>
+    <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Type pret</a></li>
+    <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">validation_pret</a></li>
     <h2>Prêts en cours - Gestion des remboursements</h2>
 
     <div id="loading" class="loading">Chargement en cours...</div>

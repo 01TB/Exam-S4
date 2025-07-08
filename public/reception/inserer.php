@@ -22,9 +22,9 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F5F6F7;
+            background-color: #000000;
             /* Off-White */
-            color: #101820;
+            color: #ffffff;
             /* Near Black */
         }
 
@@ -71,7 +71,7 @@
         .tab:hover {
             background-color: #007CBA;
             /* Light Blue */
-            color: #F5F6F7;
+            color: #000000;
             /* Off-White */
         }
     </style>
@@ -89,11 +89,11 @@
                         </svg>
                     </label>
                     <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#A0B2B8] rounded-box w-52">
-                        <li><a href="/EXAM-S4/public/reception/reception.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Accueil</a></li>
-                        <li><a href="/EXAM-S4/public/reception/inserer.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Insérer un prêt</a></li>
-                        <li><a href="/EXAM-S4/public/reception/liste_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Liste des prêts</a></li>
-                        <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Déconnexion</a></li>
-                        <li><a href="/EXAM-S4/public/reception/liste_formulaire_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">liste_formulaire_prets</a></li>
+                        <li><a href="/EXAM-S4/public/reception/reception.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Accueil</a></li>
+                        <li><a href="/EXAM-S4/public/reception/inserer.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Insérer un prêt</a></li>
+                        <li><a href="/EXAM-S4/public/reception/liste_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Liste des prêts</a></li>
+                        <li><a href="/EXAM-S4/public/login.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Déconnexion</a></li>
+                        <li><a href="/EXAM-S4/public/reception/liste_formulaire_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">liste_formulaire_prets</a></li>
                     </ul>
                 </div>
                 <div class="flex items-center">
@@ -105,11 +105,11 @@
             </div>
             <div class="navbar-center hidden lg:flex">
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#A0B2B8] rounded-box w-52">
-                    <li><a href="/EXAM-S4/public/reception/reception.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Accueil</a></li>
-                    <li><a href="/EXAM-S4/public/reception/inserer.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Insérer un prêt</a></li>
-                    <li><a href="/EXAM-S4/public/reception/liste_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Liste des prêts</a></li>
-                    <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Déconnexion</a></li>
-                    <li><a href="/EXAM-S4/public/reception/liste_formulaire_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">liste_formulaire_prets</a></li>
+                    <li><a href="/EXAM-S4/public/reception/reception.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Accueil</a></li>
+                    <li><a href="/EXAM-S4/public/reception/inserer.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Insérer un prêt</a></li>
+                    <li><a href="/EXAM-S4/public/reception/liste_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Liste des prêts</a></li>
+                    <li><a href="/EXAM-S4/public/login.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Déconnexion</a></li>
+                    <li><a href="/EXAM-S4/public/reception/liste_formulaire_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">liste_formulaire_prets</a></li>
                 </ul>
             </div>
             <div class="navbar-end">
@@ -121,11 +121,11 @@
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8 max-w-6xl">
         <h2 class="text-3xl font-['Playfair_Display'] text-[#003A70] mb-6 fade-in">Simulation détaillée de prêt</h2>
-        <form id="loanForm" class="card bg-[#F5F6F7] p-6 shadow-lg rounded-lg fade-in">
+        <form id="loanForm" class="card bg-[#000000] p-6 shadow-lg rounded-lg fade-in">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div class="form-control">
                     <label class="label" for="id_client">
-                        <span class="label-text text-[#101820] font-['Playfair_Display']">Client</span>
+                        <span class="label-text text-[#ffffff] font-['Playfair_Display']">Client</span>
                         <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                         </svg>
@@ -138,7 +138,7 @@
                 </div>
                 <div class="form-control">
                     <label class="label" for="id_type_pret">
-                        <span class="label-text text-[#101820] font-['Playfair_Display']">Type de prêt</span>
+                        <span class="label-text text-[#ffffff] font-['Playfair_Display']">Type de prêt</span>
                         <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14"></path>
                         </svg>
@@ -154,7 +154,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div class="form-control">
                     <label class="label" for="montant_pret">
-                        <span class="label-text text-[#101820] font-['Playfair_Display']">Montant du prêt (€)</span>
+                        <span class="label-text text-[#ffffff] font-['Playfair_Display']">Montant du prêt (€)</span>
                         <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
@@ -163,7 +163,7 @@
                 </div>
                 <div class="form-control">
                     <label class="label" for="duree_remboursement">
-                        <span class="label-text text-[#101820] font-['Playfair_Display']">Durée (mois)</span>
+                        <span class="label-text text-[#ffffff] font-['Playfair_Display']">Durée (mois)</span>
                         <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
@@ -174,7 +174,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div class="form-control">
                     <label class="label" for="taux">
-                        <span class="label-text text-[#101820] font-['Playfair_Display']">Taux d'intérêt (%)</span>
+                        <span class="label-text text-[#ffffff] font-['Playfair_Display']">Taux d'intérêt (%)</span>
                         <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                         </svg>
@@ -183,7 +183,7 @@
                 </div>
                 <div class="form-control">
                     <label class="label" for="date_demande">
-                        <span class="label-text text-[#101820] font-['Playfair_Display']">Date de demande</span>
+                        <span class="label-text text-[#ffffff] font-['Playfair_Display']">Date de demande</span>
                         <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
@@ -194,7 +194,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div class="form-control">
                     <label for="assurance" class="label">
-                        <span class="label-text text-[#101820] font-['Playfair_Display']">Assurance (%)</span>
+                        <span class="label-text text-[#ffffff] font-['Playfair_Display']">Assurance (%)</span>
                         <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                         </svg>
@@ -203,13 +203,13 @@
                 </div>
             </div>
             <div class="flex gap-4">
-                <button type="button" id="simulateBtn" class="btn bg-[#003A70] text-[#F5F6F7] hover:bg-[#007CBA] flex items-center">
+                <button type="button" id="simulateBtn" class="btn bg-[#003A70] text-[#ffffff] hover:bg-[#007CBA] flex items-center">
                     <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                     </svg>
                     Simuler le prêt
                 </button>
-                <button type="submit" id="submitBtn" class="btn bg-[#003A70] text-[#F5F6F7] hover:bg-[#007CBA] flex items-center">
+                <button type="submit" id="submitBtn" class="btn bg-[#003A70] text-[#ffffff] hover:bg-[#007CBA] flex items-center">
                     <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
@@ -219,33 +219,33 @@
         </form>
 
         <div id="simulationContainer" class="mt-8 hidden">
-            <button id="generatePdfBtn" class="btn bg-[#003A70] text-[#F5F6F7] hover:bg-[#007CBA] mb-4 flex items-center">
+            <button id="generatePdfBtn" class="btn bg-[#003A70] text-[#ffffff] hover:bg-[#007CBA] mb-4 flex items-center">
                 <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                 </svg>
                 Exporter en PDF
             </button>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                <div class="summary-card card bg-[#F5F6F7] p-4 shadow-lg rounded-lg fade-in">
+                <div class="summary-card card bg-[#000000] p-4 shadow-lg rounded-lg fade-in">
                     <h3 class="text-lg font-['Playfair_Display'] text-[#003A70]">Mensualité</h3>
-                    <div class="text-2xl font-bold text-[#101820]" id="monthlyPayment">-</div>
+                    <div class="text-2xl font-bold text-[#ffffff]" id="monthlyPayment">-</div>
                 </div>
-                <div class="summary-card card bg-[#F5F6F7] p-4 shadow-lg rounded-lg fade-in">
+                <div class="summary-card card bg-[#000000] p-4 shadow-lg rounded-lg fade-in">
                     <h3 class="text-lg font-['Playfair_Display'] text-[#003A70]">Total à rembourser</h3>
-                    <div class="text-2xl font-bold text-[#101820]" id="totalPayment">-</div>
+                    <div class="text-2xl font-bold text-[#ffffff]" id="totalPayment">-</div>
                 </div>
-                <div class="summary-card card bg-[#F5F6F7] p-4 shadow-lg rounded-lg fade-in">
+                <div class="summary-card card bg-[#000000] p-4 shadow-lg rounded-lg fade-in">
                     <h3 class="text-lg font-['Playfair_Display'] text-[#003A70]">Coût des intérêts</h3>
-                    <div class="text-2xl font-bold text-[#101820]" id="interestCost">-</div>
+                    <div class="text-2xl font-bold text-[#ffffff]" id="interestCost">-</div>
                 </div>
-                <div class="summary-card card bg-[#F5F6F7] p-4 shadow-lg rounded-lg fade-in">
+                <div class="summary-card card bg-[#000000] p-4 shadow-lg rounded-lg fade-in">
                     <h3 class="text-lg font-['Playfair_Display'] text-[#003A70]">TAEG</h3>
-                    <div class="text-2xl font-bold text-[#101820]" id="taeg">-</div>
+                    <div class="text-2xl font-bold text-[#ffffff]" id="taeg">-</div>
                 </div>
             </div>
             <div class="tabs flex mb-4">
-                <button class="tab btn bg-[#A0B2B8] text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7] mr-2 active" onclick="openTab('amortization')">Tableau d'amortissement</button>
-                <button class="tab btn bg-[#A0B2B8] text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]" onclick="openTab('graph')">Visualisation</button>
+                <button class="tab btn bg-[#A0B2B8] text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff] mr-2 active" onclick="openTab('amortization')">Tableau d'amortissement</button>
+                <button class="tab btn bg-[#A0B2B8] text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]" onclick="openTab('graph')">Visualisation</button>
             </div>
             <div id="amortization" class="tab-content active">
                 <div class="overflow-x-auto">
@@ -273,7 +273,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#F5F6F7] text-[#101820] text-center py-4 font-['Inter']">
+    <footer class="bg-[#000000] text-[#ffffff] text-center py-4 font-['Inter']">
         <p>© 2025 CPbank. Tous droits réservés.</p>
     </footer>
 
@@ -464,7 +464,7 @@
                 }
 
                 const row = document.createElement('tr');
-                row.className = 'hover:bg-[#007CBA] hover:text-[#F5F6F7]';
+                row.className = 'hover:bg-[#007CBA] hover:text-[#ffffff]';
                 row.innerHTML = `
                     <td class="font-['Inter']">${mois}</td>
                     <td class="font-['Inter']">${datePaiement.toLocaleDateString('fr-FR', { month: 'short', year: 'numeric' })}</td>
@@ -505,7 +505,7 @@
                         data: [montant, interets],
                         backgroundColor: ['#003A70', '#007CBA'],
                         /* Dark Blue, Light Blue */
-                        borderColor: ['#F5F6F7', '#F5F6F7'],
+                        borderColor: ['#000000', '#000000'],
                         borderWidth: 1
                     }]
                 },
@@ -520,7 +520,7 @@
                                     family: 'Inter',
                                     size: 14
                                 },
-                                color: '#101820'
+                                color: '#ffffff'
                             }
                         },
                         tooltip: {

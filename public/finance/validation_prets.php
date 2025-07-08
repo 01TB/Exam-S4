@@ -12,8 +12,8 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F5F6F7;
-            color: #101820;
+            background-color: #000000;
+            color: #ffffff;
         }
 
         h1,
@@ -59,12 +59,12 @@
 
         .success {
             background-color: #007CBA;
-            color: #F5F6F7;
+            color: #000000;
         }
 
         .error {
             background-color: #A0B2B8;
-            color: #101820;
+            color: #ffffff;
         }
     </style>
 </head>
@@ -80,12 +80,12 @@
                         </svg>
                     </label>
                     <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#A0B2B8] rounded-box w-52">
-                        <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Accueil</a></li>
-                        <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Depot</a></li>
-                        <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Interet</a></li>
-                        <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Type pret</a></li>
-                        <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Validation Prêts</a></li>
-                        <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Déconnexion</a></li>
+                        <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Accueil</a></li>
+                        <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Depot</a></li>
+                        <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Interet</a></li>
+                        <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Type pret</a></li>
+                        <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Validation Prêts</a></li>
+                        <li><a href="/EXAM-S4/public/login.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Déconnexion</a></li>
                     </ul>
                 </div>
                 <div class="flex items-center">
@@ -97,12 +97,13 @@
             </div>
             <div class="navbar-center hidden lg:flex">
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#A0B2B8] rounded-box w-52">
-                    <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Accueil</a></li>
-                    <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Depot</a></li>
-                    <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Interet</a></li>
-                    <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Type pret</a></li>
-                    <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Validation Prêts</a></li>
-                    <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Déconnexion</a></li>
+                    <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Accueil</a></li>
+                    <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Depot</a></li>
+                    <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Interet</a></li>
+                    <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Type pret</a></li>
+                    <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Validation Prêts</a></li>
+                    <li><a href="/EXAM-S4/public/login.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Déconnexion</a></li><li><a href="/EXAM-S4/public/finance/montantDispo.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Montant dispo</a></li>
+                        <li><a href="/EXAM-S4/public/finance/remboursement.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Remboursement</a></li>
                 </ul>
             </div>
             <div class="navbar-end">
@@ -113,7 +114,7 @@
 
     <main class="container mx-auto px-4 py-8 max-w-6xl">
         <h2 class="text-3xl font-['Playfair_Display'] text-[#003A70] mb-6 fade-in">Validation des prêts en cours</h2>
-        <div class="card bg-[#F5F6F7] p-6 shadow-lg rounded-lg fade-in">
+        <div class="card bg-[#000000] p-6 shadow-lg rounded-lg fade-in">
             <p class="success">Action effectuée avec succès !</p>
             <p class="error">Erreur lors de l'action</p>
             <div class="overflow-x-auto">
@@ -136,7 +137,7 @@
         </div>
     </main>
 
-    <footer class="bg-[#F5F6F7] text-[#101820] text-center py-4 font-['Inter']">
+    <footer class="bg-[#000000] text-[#ffffff] text-center py-4 font-['Inter']">
         <p>© 2025 CPbank. Tous droits réservés.</p>
     </footer>
 
@@ -153,7 +154,7 @@
                 console.log(response);
                 response.forEach(loan => {
                     const row = document.createElement('tr');
-                    row.className = 'hover:bg-[#007CBA] hover:text-[#F5F6F7]';
+                    row.className = 'hover:bg-[#007CBA] hover:text-[#ffffff]';
                     row.innerHTML = `
                         <td class="font-['Inter']">${loan.id}</td>
                         <td class="font-['Inter']">${loan.id_client}</td>
@@ -163,8 +164,8 @@
                         <td class="font-['Inter']">${loan.taux} %</td>
                         <td class="font-['Inter']">${loan.date_demande}</td>
                         <td class="font-['Inter']">
-                            <button class="btn btn-sm bg-[#007CBA] text-[#F5F6F7] hover:bg-[#003A70] validate-btn" data-id="${loan.id}">Valider</button>
-                            <button class="btn btn-sm bg-[#A0B2B8] text-[#101820] hover:bg-[#003A70] hover:text-[#F5F6F7] reject-btn" data-id="${loan.id}">Refuser</button>
+                            <button class="btn btn-sm bg-[#007CBA] text-[#ffffff] hover:bg-[#003A70] validate-btn" data-id="${loan.id}">Valider</button>
+                            <button class="btn btn-sm bg-[#A0B2B8] text-[#ffffff] hover:bg-[#003A70] hover:text-[#ffffff] reject-btn" data-id="${loan.id}">Refuser</button>
                         </td>
                     `;
                     tableBody.appendChild(row);

@@ -25,8 +25,8 @@ $clients = [
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F5F6F7;
-            color: #101820;
+            background-color: #000000;
+            color: #ffffff;
         }
 
         h1,
@@ -72,12 +72,12 @@ $clients = [
 
         .success {
             background-color: #007CBA;
-            color: #F5F6F7;
+            color: #000000;
         }
 
         .error {
             background-color: #A0B2B8;
-            color: #101820;
+            color: #ffffff;
         }
 
         .loader {
@@ -99,11 +99,11 @@ $clients = [
                         </svg>
                     </label>
                     <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#A0B2B8] rounded-box w-52">
-                        <li><a href="/EXAM-S4/public/reception/reception.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Accueil</a></li>
-                        <li><a href="/EXAM-S4/public/reception/inserer.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Insérer un prêt</a></li>
-                        <li><a href="/EXAM-S4/public/reception/liste_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Liste des prêts</a></li>
-                        <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Déconnexion</a></li>
-                        <li><a href="/EXAM-S4/public/reception/liste_formulaire_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">liste_formulaire_prets</a></li>
+                        <li><a href="/EXAM-S4/public/reception/reception.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Accueil</a></li>
+                        <li><a href="/EXAM-S4/public/reception/inserer.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Insérer un prêt</a></li>
+                        <li><a href="/EXAM-S4/public/reception/liste_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Liste des prêts</a></li>
+                        <li><a href="/EXAM-S4/public/login.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Déconnexion</a></li>
+                        <li><a href="/EXAM-S4/public/reception/liste_formulaire_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">liste_formulaire_prets</a></li>
                     </ul>
                 </div>
                 <div class="flex items-center">
@@ -115,11 +115,11 @@ $clients = [
             </div>
             <div class="navbar-center hidden lg:flex">
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#A0B2B8] rounded-box w-52">
-                    <li><a href="/EXAM-S4/public/reception/reception.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Accueil</a></li>
-                    <li><a href="/EXAM-S4/public/reception/inserer.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Insérer un prêt</a></li>
-                    <li><a href="/EXAM-S4/public/reception/liste_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Liste des prêts</a></li>
-                    <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Déconnexion</a></li>
-                    <li><a href="/EXAM-S4/public/reception/liste_formulaire_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">liste_formulaire_prets</a></li>
+                    <li><a href="/EXAM-S4/public/reception/reception.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Accueil</a></li>
+                    <li><a href="/EXAM-S4/public/reception/inserer.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Insérer un prêt</a></li>
+                    <li><a href="/EXAM-S4/public/reception/liste_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Liste des prêts</a></li>
+                    <li><a href="/EXAM-S4/public/login.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Déconnexion</a></li>
+                    <li><a href="/EXAM-S4/public/reception/liste_formulaire_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">liste_formulaire_prets</a></li>
                 </ul>
             </div>
             <div class="navbar-end">
@@ -130,7 +130,7 @@ $clients = [
 
     <main class="container mx-auto px-4 py-8 max-w-6xl">
         <h2 class="text-3xl font-['Playfair_Display'] text-[#003A70] mb-6 fade-in">Formulaires de prêts</h2>
-        <div class="card bg-[#F5F6F7] p-6 shadow-lg rounded-lg fade-in">
+        <div class="card bg-[#000000] p-6 shadow-lg rounded-lg fade-in">
             <p class="success">Prêts sélectionnés pour comparaison !</p>
             <p class="error">Erreur lors de la sélection des prêts</p>
             <div class="loader">
@@ -139,13 +139,13 @@ $clients = [
             </div>
             <div id="forms-container"></div>
             <div class="flex gap-4 mt-4">
-                <button onclick="addLoanForm()" class="btn bg-[#003A70] text-[#F5F6F7] hover:bg-[#007CBA] flex items-center">
+                <button onclick="addLoanForm()" class="btn bg-[#003A70] text-[#ffffff] hover:bg-[#007CBA] flex items-center">
                     <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                     </svg>
                     Ajouter un formulaire
                 </button>
-                <button onclick="compareSelectedLoans()" class="btn bg-[#003A70] text-[#F5F6F7] hover:bg-[#007CBA] flex items-center">
+                <button onclick="compareSelectedLoans()" class="btn bg-[#003A70] text-[#ffffff] hover:bg-[#007CBA] flex items-center">
                     <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m-12 4h12m0 0l-4 4m4-4l-4-4"></path>
                     </svg>
@@ -155,7 +155,7 @@ $clients = [
         </div>
     </main>
 
-    <footer class="bg-[#F5F6F7] text-[#101820] text-center py-4 font-['Inter']">
+    <footer class="bg-[#000000] text-[#ffffff] text-center py-4 font-['Inter']">
         <p>© 2025 CPbank. Tous droits réservés.</p>
     </footer>
 
@@ -200,7 +200,7 @@ $clients = [
             formCount++;
             const container = document.getElementById('forms-container');
             const formDiv = document.createElement('div');
-            formDiv.className = 'form-card card bg-[#F5F6F7] p-6 shadow-lg rounded-lg mt-4';
+            formDiv.className = 'form-card card bg-[#000000] p-6 shadow-lg rounded-lg mt-4';
             formDiv.id = `form-${formCount}`;
             formDiv.innerHTML = `
                 <div class="flex items-center mb-4">
@@ -210,7 +210,7 @@ $clients = [
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="form-control">
                         <label class="label" for="id_client-${formCount}">
-                            <span class="label-text text-[#101820] font-['Playfair_Display']">Client</span>
+                            <span class="label-text text-[#ffffff] font-['Playfair_Display']">Client</span>
                         </label>
                         <select name="id_client" id="id_client-${formCount}" class="select select-bordered border-[#A0B2B8] focus:border-[#007CBA]" required>
                             <option value="">Sélectionner un client</option>
@@ -219,7 +219,7 @@ $clients = [
                     </div>
                     <div class="form-control">
                         <label class="label" for="id_type_pret-${formCount}">
-                            <span class="label-text text-[#101820] font-['Playfair_Display']">Type de prêt</span>
+                            <span class="label-text text-[#ffffff] font-['Playfair_Display']">Type de prêt</span>
                         </label>
                         <select name="id_type_pret" id="id_type_pret-${formCount}" class="select select-bordered border-[#A0B2B8] focus:border-[#007CBA]" required>
                             <option value="">Sélectionner un type</option>
@@ -237,31 +237,31 @@ $clients = [
                     </div>
                     <div class="form-control">
                         <label class="label" for="montant_pret-${formCount}">
-                            <span class="label-text text-[#101820] font-['Playfair_Display']">Montant (€)</span>
+                            <span class="label-text text-[#ffffff] font-['Playfair_Display']">Montant (€)</span>
                         </label>
                         <input type="number" name="montant_pret" id="montant_pret-${formCount}" step="0.01" min="0" class="input input-bordered border-[#A0B2B8] focus:border-[#007CBA]" required>
                     </div>
                     <div class="form-control">
                         <label class="label" for="duree_remboursement-${formCount}">
-                            <span class="label-text text-[#101820] font-['Playfair_Display']">Durée (mois)</span>
+                            <span class="label-text text-[#ffffff] font-['Playfair_Display']">Durée (mois)</span>
                         </label>
                         <input type="number" name="duree_remboursement" id="duree_remboursement-${formCount}" step="1" min="0" class="input input-bordered border-[#A0B2B8] focus:border-[#007CBA]" required>
                     </div>
                     <div class="form-control">
                         <label class="label" for="taux-${formCount}">
-                            <span class="label-text text-[#101820] font-['Playfair_Display']">Taux (%)</span>
+                            <span class="label-text text-[#ffffff] font-['Playfair_Display']">Taux (%)</span>
                         </label>
                         <input type="number" name="taux" id="taux-${formCount}" step="0.01" min="0" max="20" class="input input-bordered border-[#A0B2B8] focus:border-[#007CBA]" required readonly>
                     </div>
                     <div class="form-control">
                         <label class="label" for="assurance-${formCount}">
-                            <span class="label-text text-[#101820] font-['Playfair_Display']">Assurance (€)</span>
+                            <span class="label-text text-[#ffffff] font-['Playfair_Display']">Assurance (€)</span>
                         </label>
                         <input type="number" name="assurance" id="assurance-${formCount}" step="0.01" min="0" class="input input-bordered border-[#A0B2B8] focus:border-[#007CBA]" value="0.00" required>
                     </div>
                     <div class="form-control">
                         <label class="label" for="date_demande-${formCount}">
-                            <span class="label-text text-[#101820] font-['Playfair_Display']">Date de demande</span>
+                            <span class="label-text text-[#ffffff] font-['Playfair_Display']">Date de demande</span>
                         </label>
                         <input type="date" name="date_demande" id="date_demande-${formCount}" class="input input-bordered border-[#A0B2B8] focus:border-[#007CBA]" value="2025-07-08" required>
                     </div>
@@ -369,7 +369,7 @@ $clients = [
                 }
 
                 const row = document.createElement('tr');
-                row.className = 'hover:bg-[#007CBA] hover:text-[#F5F6F7] transition-colors';
+                row.className = 'hover:bg-[#007CBA] hover:text-[#ffffff] transition-colors';
                 row.innerHTML = `
                     <td class="font-['Inter']">${mois}</td>
                     <td class="font-['Inter']">${date.toISOString().split('T')[0]}</td>

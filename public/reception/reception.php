@@ -15,9 +15,9 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F5F6F7;
+            background-color: #000000;
             /* Off-White */
-            color: #101820;
+            color: #ffffff;
             /* Near Black */
         }
 
@@ -68,11 +68,11 @@
                         </svg>
                     </label>
                     <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#A0B2B8] rounded-box w-52">
-                        <li><a href="/EXAM-S4/public/reception/reception.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Accueil</a></li>
-                        <li><a href="/EXAM-S4/public/reception/inserer.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Insérer un prêt</a></li>
-                        <li><a href="/EXAM-S4/public/reception/liste_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Liste des prêts</a></li>
-                        <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Déconnexion</a></li>
-                        <li><a href="/EXAM-S4/public/reception/liste_formulaire_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">liste_formulaire_prets</a></li>
+                        <li><a href="/EXAM-S4/public/reception/reception.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Accueil</a></li>
+                        <li><a href="/EXAM-S4/public/reception/inserer.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Insérer un prêt</a></li>
+                        <li><a href="/EXAM-S4/public/reception/liste_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Liste des prêts</a></li>
+                        <li><a href="/EXAM-S4/public/login.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Déconnexion</a></li>
+                        <li><a href="/EXAM-S4/public/reception/liste_formulaire_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">liste_formulaire_prets</a></li>
                     </ul>
                 </div>
                 <div class="flex items-center">
@@ -84,11 +84,11 @@
             </div>
             <div class="navbar-center hidden lg:flex">
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#A0B2B8] rounded-box w-52">
-                    <li><a href="/EXAM-S4/public/reception/reception.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Accueil</a></li>
-                    <li><a href="/EXAM-S4/public/reception/inserer.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Insérer un prêt</a></li>
-                    <li><a href="/EXAM-S4/public/reception/liste_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Liste des prêts</a></li>
-                    <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Déconnexion</a></li>
-                    <li><a href="/EXAM-S4/public/reception/liste_formulaire_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">liste_formulaire_prets</a></li>
+                    <li><a href="/EXAM-S4/public/reception/reception.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Accueil</a></li>
+                    <li><a href="/EXAM-S4/public/reception/inserer.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Insérer un prêt</a></li>
+                    <li><a href="/EXAM-S4/public/reception/liste_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Liste des prêts</a></li>
+                    <li><a href="/EXAM-S4/public/login.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Déconnexion</a></li>
+                    <li><a href="/EXAM-S4/public/reception/liste_formulaire_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">liste_formulaire_prets</a></li>
                 </ul>
             </div>
             <div class="navbar-end">
@@ -102,24 +102,24 @@
         <h2 class="text-3xl font-['Playfair_Display'] mb-6 fade-in">Tableau de bord - Réception</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <!-- Card for Insérer un prêt -->
-            <a href="/EXAM-S4/public/reception/inserer.php" class="card bg-[#F5F6F7] rounded-lg shadow-lg p-6 flex items-center space-x-4 fade-in">
+            <a href="/EXAM-S4/public/reception/inserer.php" class="card bg-[#000000] rounded-lg shadow-lg p-6 flex items-center space-x-4 fade-in">
                 <svg class="h-12 w-12 text-[#007CBA]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
                 <div>
                     <h3 class="text-xl font-['Playfair_Display'] text-[#003A70]">Insérer un prêt</h3>
-                    <p class="text-[#101820] font-['Inter']">Créer une nouvelle demande de prêt pour un client.</p>
+                    <p class="text-[#ffffff] font-['Inter']">Créer une nouvelle demande de prêt pour un client.</p>
                 </div>
                 <img src="https://via.placeholder.com/100x100?text=Prêt" alt="Prêt Icon" class="ml-auto rounded-full">
             </a>
             <!-- Card for Liste des prêts -->
-            <a href="/EXAM-S4/public/reception/liste_prets.php" class="card bg-[#F5F6F7] rounded-lg shadow-lg p-6 flex items-center space-x-4 fade-in">
+            <a href="/EXAM-S4/public/reception/liste_prets.php" class="card bg-[#000000] rounded-lg shadow-lg p-6 flex items-center space-x-4 fade-in">
                 <svg class="h-12 w-12 text-[#007CBA]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14"></path>
                 </svg>
                 <div>
                     <h3 class="text-xl font-['Playfair_Display'] text-[#003A70]">Liste des prêts</h3>
-                    <p class="text-[#101820] font-['Inter']">Voir toutes les demandes de prêts enregistrées.</p>
+                    <p class="text-[#ffffff] font-['Inter']">Voir toutes les demandes de prêts enregistrées.</p>
                 </div>
                 <img src="https://via.placeholder.com/100x100?text=Liste" alt="Liste Icon" class="ml-auto rounded-full">
             </a>
@@ -137,27 +137,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="hover:bg-[#007CBA] hover:text-[#F5F6F7] transition-colors">
+                    <tr class="hover:bg-[#007CBA] hover:text-[#ffffff] transition-colors">
                         <td class="font-['Inter']">1</td>
                         <td class="font-['Inter']">5000</td>
                         <td class="font-['Inter'] text-[#007CBA]">Approuvé</td>
                     </tr>
-                    <tr class="hover:bg-[#007CBA] hover:text-[#F5F6F7] transition-colors">
+                    <tr class="hover:bg-[#007CBA] hover:text-[#ffffff] transition-colors">
                         <td class="font-['Inter']">2</td>
                         <td class="font-['Inter']">3000</td>
                         <td class="font-['Inter'] text-[#A0B2B8]">En attente</td>
                     </tr>
-                    <tr class="hover:bg-[#007CBA] hover:text-[#F5F6F7] transition-colors">
+                    <tr class="hover:bg-[#007CBA] hover:text-[#ffffff] transition-colors">
                         <td class="font-['Inter']">3</td>
                         <td class="font-['Inter']">7000</td>
                         <td class="font-['Inter'] text-[#A0B2B8]">Rejeté</td>
                     </tr>
-                    <tr class="hover:bg-[#007CBA] hover:text-[#F5F6F7] transition-colors">
+                    <tr class="hover:bg-[#007CBA] hover:text-[#ffffff] transition-colors">
                         <td class="font-['Inter']">4</td>
                         <td class="font-['Inter']">2000</td>
                         <td class="font-['Inter'] text-[#007CBA]">Approuvé</td>
                     </tr>
-                    <tr class="hover:bg-[#007CBA] hover:text-[#F5F6F7] transition-colors">
+                    <tr class="hover:bg-[#007CBA] hover:text-[#ffffff] transition-colors">
                         <td class="font-['Inter']">5</td>
                         <td class="font-['Inter']">4000</td>
                         <td class="font-['Inter'] text-[#A0B2B8]">En attente</td>
@@ -168,7 +168,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#F5F6F7] text-[#101820] text-center py-4 font-['Inter']">
+    <footer class="bg-[#000000] text-[#ffffff] text-center py-4 font-['Inter']">
         <p>© 2025 CPbank. Tous droits réservés.</p>
     </footer>
 </body>

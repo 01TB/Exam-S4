@@ -15,9 +15,9 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #F5F6F7;
+      background-color: #000000;
       /* Off-White */
-      color: #101820;
+      color: #ffffff;
       /* Near Black */
       display: flex;
       flex-direction: column;
@@ -36,7 +36,7 @@
       max-width: 400px;
       width: 100%;
       padding: 2rem;
-      background-color: #F5F6F7;
+      background-color: #000000;
       /* Off-White */
       border-radius: 0.5rem;
       box-shadow: 0 10px 15px rgba(0, 58, 112, 0.1);
@@ -77,14 +77,14 @@
     .success {
       background-color: #007CBA;
       /* Light Blue */
-      color: #F5F6F7;
+      color: #000000;
       /* Off-White */
     }
 
     .error {
       background-color: #A0B2B8;
       /* Light Gray */
-      color: #101820;
+      color: #ffffff;
       /* Near Black */
     }
 
@@ -122,7 +122,7 @@
       <form id="loginForm">
         <div class="form-control mb-4">
           <label class="label" for="nom">
-            <span class="label-text text-[#101820] font-['Playfair_Display']">Nom d'utilisateur</span>
+            <span class="label-text text-[#ffffff] font-['Playfair_Display']">Nom d'utilisateur</span>
             <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
             </svg>
@@ -131,14 +131,14 @@
         </div>
         <div class="form-control mb-4">
           <label class="label" for="password">
-            <span class="label-text text-[#101820] font-['Playfair_Display']">Mot de passe</span>
+            <span class="label-text text-[#ffffff] font-['Playfair_Display']">Mot de passe</span>
             <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 1.104-.896 2-2 2H7v2h3c1.104 0 2 .896 2 2v4H5v-4c0-1.104.896-2 2-2h3V9H7c-1.104 0-2-.896-2-2V5h7v4zm6 6h-2v2h2v-2zm0-4h-2v2h2v-2zm0-4h-2v2h2V9z"></path>
             </svg>
           </label>
           <input type="password" id="password" name="password" placeholder="Mot de passe" class="input input-bordered border-[#A0B2B8] focus:border-[#007CBA]" required>
         </div>
-        <button type="submit" class="btn bg-[#003A70] text-[#F5F6F7] hover:bg-[#007CBA] w-full flex items-center justify-center">
+        <button type="submit" class="btn bg-[#003A70] text-[#ffffff] hover:bg-[#007CBA] w-full flex items-center justify-center">
           <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14"></path>
           </svg>
@@ -151,7 +151,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-[#F5F6F7] text-[#101820] text-center py-4 font-['Inter']">
+  <footer class="bg-[#000000] text-[#ffffff] text-center py-4 font-['Inter']">
     <p>© 2025 CPbank. Tous droits réservés.</p>
   </footer>
 

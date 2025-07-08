@@ -15,9 +15,9 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F5F6F7;
+            background-color: #000000;
             /* Off-White */
-            color: #101820;
+            color: #ffffff;
             /* Near Black */
         }
 
@@ -69,12 +69,14 @@
                         </svg>
                     </label>
                     <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#A0B2B8] rounded-box w-52">
-                        <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Accueil</a></li>
-                        <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Depot</a></li>
-                        <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Interet</a></li>
-                        <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Type pret</a></li>
-                        <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Validation Prêts</a></li>
-                        <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Déconnexion</a></li>
+                        <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Accueil</a></li>
+                        <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Depot</a></li>
+                        <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Interet</a></li>
+                        <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Type pret</a></li>
+                        <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Validation Prêts</a></li>
+                        <li><a href="/EXAM-S4/public/finance/montantDispo.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Montant dispo</a></li>
+                        <li><a href="/EXAM-S4/public/finance/remboursement.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Remboursement</a></li>
+                        <li><a href="/EXAM-S4/public/login.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Déconnexion</a></li>
                     </ul>
                 </div>
                 <div class="flex items-center">
@@ -86,12 +88,13 @@
             </div>
             <div class="navbar-center hidden lg:flex">
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#A0B2B8] rounded-box w-52">
-                    <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Accueil</a></li>
-                    <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Depot</a></li>
-                    <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Interet</a></li>
-                    <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Type pret</a></li>
-                    <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Validation Prêts</a></li>
-                    <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Déconnexion</a></li>
+                    <li><a href="/EXAM-S4/public/finance/finance.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Accueil</a></li>
+                    <li><a href="/EXAM-S4/public/finance/depot.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Depot</a></li>
+                    <li><a href="/EXAM-S4/public/finance/interet.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Interet</a></li>
+                    <li><a href="/EXAM-S4/public/finance/type_pret.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Type pret</a></li>
+                    <li><a href="/EXAM-S4/public/finance/validation_prets.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Validation Prêts</a></li>
+                    <li><a href="/EXAM-S4/public/login.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Déconnexion</a></li><li><a href="/EXAM-S4/public/finance/montantDispo.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Montant dispo</a></li>
+                        <li><a href="/EXAM-S4/public/finance/remboursement.php" class="text-[#ffffff] hover:bg-[#007CBA] hover:text-[#ffffff]">Remboursement</a></li>
                 </ul>
             </div>
             <div class="navbar-end">
@@ -106,7 +109,7 @@
 
         <!-- Derniers dépôts -->
         <h3 class="text-2xl font-['Playfair_Display'] text-[#003A70] mb-4 fade-in">Derniers dépôts</h3>
-        <div class="table-container card bg-[#F5F6F7] p-6 shadow-lg rounded-lg fade-in">
+        <div class="table-container card bg-[#000000] p-6 shadow-lg rounded-lg fade-in">
             <div class="overflow-x-auto">
                 <table class="table w-full border-collapse">
                     <thead>
@@ -154,14 +157,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="hover:bg-[#007CBA] hover:text-[#F5F6F7] transition-colors">
+                        <tr class="hover:bg-[#007CBA] hover:text-[#ffffff] transition-colors">
                             <td class="font-['Inter']">1</td>
                             <td class="font-['Inter']">Jean Dupont</td>
                             <td class="font-['Inter']">10000.00</td>
                             <td class="font-['Inter']">2025-07-01</td>
                             <td class="font-['Inter']">Investissement initial</td>
                         </tr>
-                        <tr class="hover:bg-[#007CBA] hover:text-[#F5F6F7] transition-colors">
+                        <tr class="hover:bg-[#007CBA] hover:text-[#ffffff] transition-colors">
                             <td class="font-['Inter']">2</td>
                             <td class="font-['Inter']">Marie Durand</td>
                             <td class="font-['Inter']">5000.00</td>
@@ -175,7 +178,7 @@
 
         <!-- Types de prêts -->
         <h3 class="text-2xl font-['Playfair_Display'] text-[#003A70] mb-4 mt-8 fade-in">Types de prêts</h3>
-        <div class="table-container card bg-[#F5F6F7] p-6 shadow-lg rounded-lg fade-in">
+        <div class="table-container card bg-[#000000] p-6 shadow-lg rounded-lg fade-in">
             <div class="overflow-x-auto">
                 <table class="table w-full border-collapse">
                     <thead>
@@ -239,7 +242,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="hover:bg-[#007CBA] hover:text-[#F5F6F7] transition-colors">
+                        <tr class="hover:bg-[#007CBA] hover:text-[#ffffff] transition-colors">
                             <td class="font-['Inter']">1</td>
                             <td class="font-['Inter']">Prêt personnel</td>
                             <td class="font-['Inter']">1000.00</td>
@@ -248,7 +251,7 @@
                             <td class="font-['Inter']">24</td>
                             <td class="font-['Inter']">5.00</td>
                         </tr>
-                        <tr class="hover:bg-[#007CBA] hover:text-[#F5F6F7] transition-colors">
+                        <tr class="hover:bg-[#007CBA] hover:text-[#ffffff] transition-colors">
                             <td class="font-['Inter']">2</td>
                             <td class="font-['Inter']">Prêt auto</td>
                             <td class="font-['Inter']">5000.00</td>
@@ -264,7 +267,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#F5F6F7] text-[#101820] text-center py-4 font-['Inter']">
+    <footer class="bg-[#000000] text-[#ffffff] text-center py-4 font-['Inter']">
         <p>© 2025 CPbank. Tous droits réservés.</p>
     </footer>
 </body>
