@@ -1,5 +1,5 @@
 <?php
-echo $_SESSION["user"]
+    echo $_SESSION["user"]
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -217,7 +217,7 @@ echo $_SESSION["user"]
         </form>
 
         <div id="simulationContainer" class="mt-8 hidden">
-            <button id="exportBtn" class="btn bg-[#003A70] text-[#F5F6F7] hover:bg-[#007CBA] mb-4 flex items-center">
+            <button id="generatePdfBtn" class="btn bg-[#003A70] text-[#F5F6F7] hover:bg-[#007CBA] mb-4 flex items-center">
                 <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                 </svg>
@@ -280,7 +280,7 @@ echo $_SESSION["user"]
     <script>
         function ajouterOuModifierPret() {
             const id_type_pret = document.getElementById("id_type_pret").value;
-            const id_user_demandeur = 2;
+            const id_user_demandeur = 1;
             const id_client = document.getElementById("id_client").value;
             const montant_pret = document.getElementById("montant_pret").value;
             const date_demande = document.getElementById("date_demande").value;
@@ -310,14 +310,12 @@ echo $_SESSION["user"]
 
             const data = `id_type_pret=${encodeURIComponent(id_type_pret)}&id_client=${encodeURIComponent(id_client)}&montant_pret=${encodeURIComponent(montant_pret)}&taux=${encodeURIComponent(taux)}&date_demande=${encodeURIComponent(date_demande)}&duree_remboursement=${encodeURIComponent(duree_remboursement)}&id_user_demandeur=${encodeURIComponent(id_user_demandeur)}&assurance=${encodeURIComponent(assurance)}`;
 
+            alert(data);
 
-            ajax("POST", "/pret/demande", data, () => {
-                resetFormPret();
-                chargerPrets();
-                document.querySelector('.success').style.display = 'block';
-                document.querySelector('.success').textContent = 'Prêt ajouté avec succès !';
-                setTimeout(() => document.querySelector('.success').style.display = 'none', 2000);
-            }, (error) => {
+            ajax("POST", "/pret/demande", data,(response)=>{
+                alert(response.message);
+            }, 
+             (error) => {
                 document.querySelector('.error').style.display = 'block';
                 document.querySelector('.error').textContent = `Erreur: ${error}`;
                 setTimeout(() => document.querySelector('.error').style.display = 'none', 2000);
@@ -336,6 +334,7 @@ echo $_SESSION["user"]
             });
 
             document.getElementById('simulateBtn').addEventListener('click', simulateLoan);
+            document.getElementById('submitBtn').addEventListener('click', ajouterOuModifierPret);
         });
 
         let loanChart = null;
@@ -495,24 +494,54 @@ echo $_SESSION["user"]
             event.currentTarget.classList.add('active');
         }
 
+        document.getElementById('generatePdfBtn').addEventListener('click', function() {
+            // Récupérer les données du formulaire
+            const formData = new FormData(document.getElementById('loanForm'));
+            const data = Object.fromEntries(formData);
+            
+            // Calculer les mensualités comme dans la fonction submit
+            const tauxMensuel = parseFloat(data.taux) / 12 / 100;
+            const nbMensualites = parseInt(data.duree_remboursement);
+            const montant = parseFloat(data.montant_pret);
+            
+            let mensualite;
+            if (tauxMensuel === 0) {
+                mensualite = montant / nbMensualites;
+            } else {
+                mensualite = (montant * tauxMensuel * Math.pow(1 + tauxMensuel, nbMensualites)) / 
+                            (Math.pow(1 + tauxMensuel, nbMensualites) - 1);
+            }
+            
+            const totalRemboursement = mensualite * nbMensualites;
+            
+            // Ajouter les champs calculés
+            data.montant_remboursement_par_mois = mensualite.toFixed(2);
+            data.montant_total_remboursement = totalRemboursement.toFixed(2);
+            
+            // Convertir l'objet en paramètres URL
+            const params = new URLSearchParams();
+            for (const key in data) {
+                params.append(key, data[key]);
+            }
+            
+            // Appel AJAX pour générer le PDF
+            ajax('POST', '/pdf', params.toString(), 
+                function(response) {
+                    if (response && response.pdfUrl) {
+                        // Ouvrir le PDF dans un nouvel onglet
+                        window.open(response.pdfUrl, '_blank');
+                    } else {
+                        console.log(response);
+                    }
+                }
+            );
+        });
+
+        // Fonction pour exporter en PDF (existante, à modifier si nécessaire)
         function exportToPDF() {
-            const {
-                jsPDF
-            } = window.jspdf;
-            const doc = new jsPDF();
-            const simulationContainer = document.getElementById('simulationContainer');
-
-            html2canvas(simulationContainer, {
-                scale: 2
-            }).then(canvas => {
-                const imgData = canvas.toDataURL('image/png');
-                const imgProps = doc.getImageProperties(imgData);
-                const pdfWidth = doc.internal.pageSize.getWidth();
-                const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-                doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-                doc.save('simulation_pret.pdf');
-            });
+            // Vous pouvez soit garder cette fonction pour l'export côté client
+            // Ou la rediriger vers la nouvelle fonction generatePdfBtn
+            document.getElementById('generatePdfBtn').click();
         }
 
         document.getElementById('loanForm').addEventListener('submit', function(e) {
