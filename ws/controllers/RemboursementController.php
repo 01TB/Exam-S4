@@ -91,17 +91,17 @@ class RemboursementController {
         );
 
         // Enregistrement transactionnel
-        $success = Remboursement::enregistrerRemboursement($remboursement, $interet);
-        
-        if ($success) {
+        try {
+            $success = Remboursement::enregistrerRemboursement($remboursement, $interet);
             Flight::json([
                 'message' => 'Remboursement et intérêt enregistrés',
                 'montant_rembourse' => $remboursement->getMontantRembourse(),
                 'montant_interet' => $interet->getMontant()
             ], 201);
-        } else {
-            Flight::halt(500, 'Erreur lors de l\'enregistrement transactionnel');
+        } catch (\Throwable $th) {
+            Flight::json(['error'=>'Erreur lors de l\'enregistrement transactionnel : '.$th->getMessage()] );
         }
+        
     }
 
     public static function update($id) {
