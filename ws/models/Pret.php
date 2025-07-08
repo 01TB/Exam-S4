@@ -158,6 +158,10 @@
             return round($capitalRestant * $tauxMensuel, 2);
         }
 
+        public function calculerAssurancePerMois(): float {
+            return round (($this->getMontantPret()*$this->getAssurance()/100)/12);
+        }
+
         /**
          * Récupère un prêt par son ID
          * @param int $id - ID du prêt
@@ -242,7 +246,7 @@
             
             // Calcul standard
             $mensualite = ($this->getMontantPret() * $tauxMensuel * pow(1 + $tauxMensuel, $nbMensualites)) 
-                        / (pow(1 + $tauxMensuel, $nbMensualites) - 1);
+                        / (pow(1 + $tauxMensuel, $nbMensualites) - 1)+$this->calculerAssurancePerMois();
             
             return round($mensualite, 2);
         }

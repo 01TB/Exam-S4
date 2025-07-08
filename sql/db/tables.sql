@@ -97,6 +97,15 @@ CREATE TABLE interet_pret_periode(
     FOREIGN KEY (id_pret) REFERENCES pret(id)
 );
 
+CREATE TABLE assurance_pret_periode(
+    id_pret INT NOT NULL,
+    montant DECIMAL(15,2) NOT NULL,
+    mois INT NOT NULL,
+    annee INT NOT NULL,
+    UNIQUE (id_pret,mois,annee),
+    FOREIGN KEY (id_pret) REFERENCES pret(id)
+);
+
 -- Remboursement prêt
 CREATE TABLE remboursement(
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -140,3 +149,47 @@ WHERE
         FROM remboursement r 
         WHERE r.id_pret = p.id
     ) < p.montant_total_remboursement;
+
+CREATE OR REPLACE VIEW vw_tresorerie_mensuelle AS
+SELECT 
+    mois, 
+    annee,
+    COALESCE(SUM(total_depots), 0) AS total_depots,
+    COALESCE(SUM(total_prets), 0) AS total_prets,
+    COALESCE(SUM(total_remboursements), 0) AS total_remboursements,
+    (COALESCE(SUM(total_depots), 0) - COALESCE(SUM(total_prets), 0) + COALESCE(SUM(total_remboursements), 0)) AS tresorerie_disponible
+FROM (
+    SELECT 
+        MONTH(date_depot) AS mois,
+        YEAR(date_depot) AS annee,
+        SUM(montant) AS total_depots,
+        0 AS total_prets,
+        0 AS total_remboursements
+    FROM depot
+    GROUP BY YEAR(date_depot), MONTH(date_depot)
+    
+    UNION ALL
+    
+    SELECT 
+        MONTH(date_validation) AS mois,
+        YEAR(date_validation) AS annee,
+        0 AS total_depots,
+        SUM(montant_pret) AS total_prets,
+        0 AS total_remboursements
+    FROM pret
+    WHERE status = 'valide'
+    GROUP BY YEAR(date_validation), MONTH(date_validation)
+    
+    UNION ALL
+    
+    SELECT 
+        MONTH(date_remboursement) AS mois,
+        YEAR(date_remboursement) AS annee,
+        0 AS total_depots,
+        0 AS total_prets,
+        SUM(montant_rembourse) AS total_remboursements
+    FROM remboursement
+    GROUP BY YEAR(date_remboursement), MONTH(date_remboursement)
+) combined_data
+GROUP BY mois, annee
+ORDER BY annee, mois;

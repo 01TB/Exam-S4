@@ -108,6 +108,14 @@
          */
         public static function calculerSoldeDisponible(string $date): float {
             $db = getDB();
+ 
+            $realDate = new DateTime($date);
+
+            // Récupérer le mois (format numérique, ex. : "07")
+            $mois = $realDate->format('m');
+
+            // Récupérer l'année (ex. : "2025")
+            $annee = $realDate->format('Y');
             
             // Calcul du total des dépôts
             $stmtDepots = $db->prepare("SELECT SUM(montant) as total_depots 
@@ -123,12 +131,70 @@
                                     AND date_validation <= ?");
             $stmtPrets->execute([$date]);
             $totalPrets = (float)$stmtPrets->fetch(PDO::FETCH_ASSOC)['total_prets'] ?? 0;
+
+            $stmtRemboursement = $db->prepare("SELECT SUM(montant_rembourse) as total_remboursement 
+                                    FROM remboursement 
+                                    WHERE date_remboursement <= ?");
+            $stmtRemboursement->execute([$date]);
+            $totalRemboursement = (float)$stmtRemboursement->fetch(PDO::FETCH_ASSOC)['total_remboursement'] ?? 0;
+
+            $stmtAssurance = $db->prepare("SELECT SUM(montant) as total_Assurance 
+                                    FROM Assurance_pret_periode app
+                                    WHERE app.mois<=month(?) AND app.annee<=year(?)");
+            $stmtAssurance->execute([$mois, $annee]);
+            $totalAssurance = (float)$stmtAssurance->fetch(PDO::FETCH_ASSOC)['total_Assurance'] ?? 0;
             
-            return round($totalDepots - $totalPrets, 2);
+            return round($totalDepots - $totalPrets+$totalRemboursement-$totalAssurance, 2);
         }
 
         // Calcul du solde au 31 décembre 2023
         // $solde = Depot::calculerSoldeDisponible('2023-12-31');
         // echo "Solde disponible : " . number_format($solde, 2, ',', ' ') . " €";
+
+        public static function getMontantDispo($moisDebut,$moisFin,$anneeDebut,$anneeFin){
+            try {
+                $db = getDB();
+            
+                // Construction dynamique de la requête
+                $sql = "SELECT *  
+                        FROM vw_tresorerie_mensuelle vwtm
+                        ";
+                
+                $params = [];
+                $m=0;
+                
+                // Ajout des conditions seulement si les paramètres ne sont pas null
+                if ($moisDebut !== null && $moisFin !== null) {
+                    $sql .= " WHERE  vwtm.mois BETWEEN :moisDebut AND :moisFin";
+                    $params[':moisDebut'] = $moisDebut;
+                    $params[':moisFin'] = $moisFin;
+                    $m=1;
+                }
+                
+                if ($anneeDebut !== null && $anneeFin !== null) {
+                    if($m==0){
+                        $sql .= " WHERE vwtm.annee BETWEEN :anneeDebut AND :anneeFin";
+                    }
+                    else{
+                        $sql .= " AND vwtm.annee BETWEEN :anneeDebut AND :anneeFin";
+                    }
+                    $params[':anneeDebut'] = $anneeDebut;
+                    $params[':anneeFin'] = $anneeFin;
+                }
+                
+                
+                $stmt = $db->prepare($sql);
+                
+                // Liaison des paramètres
+                foreach ($params as $key => $value) {
+                    $stmt->bindValue($key, $value, PDO::PARAM_INT);
+                }
+                
+                $stmt->execute();
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+        }
     }
 ?>

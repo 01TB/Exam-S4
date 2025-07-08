@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../inc/db.php';
 require_once __DIR__ . '/Pret.php';
 require_once __DIR__ . '/InteretPretPeriode.php';
+require_once __DIR__ . '/Assurance.php';
 
 class Remboursement {
     private $id;
@@ -129,6 +130,17 @@ class Remboursement {
             $stmtInteret->execute([
                 $interet->getIdPret(),
                 $interet->getMontant(),
+                $interet->getMois(),
+                $interet->getAnnee()
+            ]);
+            $assurance = Pret::getById($interet->getIdPret())->calculerAssurancePerMois(); 
+
+            $stmtAssurance = $db->prepare("INSERT INTO assurance_pret_periode 
+                                        (id_pret, montant, mois, annee) 
+                                        VALUES (?, ?, ?, ?)");
+            $stmtAssurance->execute([
+                $interet->getIdPret(),
+                $assurance,
                 $interet->getMois(),
                 $interet->getAnnee()
             ]);
