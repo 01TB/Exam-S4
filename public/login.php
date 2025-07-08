@@ -117,6 +117,8 @@
         </svg>
         <h1 class="text-2xl font-['Playfair_Display'] text-[#003A70]">CPbank</h1>
       </div>
+      <h2 class="text-2xl font-['Playfair_Display'] text-[#003AAA]">Admin : nom = admin / mpd = 123</h2>
+      <h2 class="text-2xl font-['Playfair_Display'] text-[#003AAA]">Reception : nom = reception / mpd = 123</h2>
       <form id="loginForm">
         <div class="form-control mb-4">
           <label class="label" for="nom">
