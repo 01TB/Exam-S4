@@ -5,6 +5,23 @@ require_once __DIR__ . '/../models/Depot.php';
 class PretController
 {
 
+        public static function getAllEnCours(){
+            header('Content-Type: application/json');
+            try {
+                $data = Pret::getAllEncours();
+                $sending = [];
+                $i=0;
+                foreach($data as $key){
+                    $sending[$i]= $key;
+                    $i++;
+                }
+                Flight::json($sending);
+            } catch (\Throwable $th) {
+                Flight::json(['error'=>$th->getMessage()]);
+            }
+            
+        }
+
     public static function demanderPret()
     {
         $data = Flight::request()->data;
