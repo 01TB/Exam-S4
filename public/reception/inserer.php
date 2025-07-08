@@ -351,6 +351,7 @@
                 setTimeout(() => document.querySelector('.error').style.display = 'none', 2000);
                 return;
             }
+            
 
             const data = `id_type_pret=${encodeURIComponent(id_type_pret)}&id_client=${encodeURIComponent(id_client)}&montant_pret=${encodeURIComponent(montant_pret)}&taux=${encodeURIComponent(taux)}&date_demande=${encodeURIComponent(date_demande)}&duree_remboursement=${encodeURIComponent(duree_remboursement)}&id_user_demandeur=${encodeURIComponent(id_user_demandeur)}&assurance=${encodeURIComponent(assurance)}`;
 
