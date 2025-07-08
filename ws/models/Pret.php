@@ -164,28 +164,32 @@
          * @return Pret|null - Objet Pret ou null si non trouvé
          */
         public static function getById(int $id): ?Pret {
-            $db = getDB();
-            $stmt = $db->prepare("SELECT * FROM pret WHERE id = ?");
-            $stmt->execute([$id]);
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            if ($row) {
-                return new Pret(
-                    $row['id'],
-                    $row['id_client'],
-                    $row['id_user_demandeur'],
-                    $row['id_user_validateur'],
-                    $row['id_type_pret'],
-                    $row['montant_pret'],
-                    $row['montant_remboursement_par_mois'],
-                    $row['montant_total_remboursement'],
-                    $row['duree_remboursement'],
-                    $row['status'],
-                    $row['taux'],
-                    $row['assurance'],
-                    $row['date_demande'],
-                    $row['date_validation']
-                );
+            try {
+                $db = getDB();
+                $stmt = $db->prepare("SELECT * FROM pret WHERE id = ?");
+                $stmt->execute([$id]);
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                
+                if ($row) {
+                    return new Pret(
+                        $row['id'],
+                        $row['id_client'],
+                        $row['id_user_demandeur'],
+                        $row['id_user_validateur'],
+                        $row['id_type_pret'],
+                        $row['montant_pret'],
+                        $row['montant_remboursement_par_mois'],
+                        $row['montant_total_remboursement'],
+                        $row['duree_remboursement'],
+                        $row['status'],
+                        $row['taux'],
+                        $row['assurance'],
+                        $row['date_demande'],
+                        $row['date_validation']
+                    );
+                }
+            } catch (\Throwable $th) {
+                throw $th;
             }
             return null;
         }

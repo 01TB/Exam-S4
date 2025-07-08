@@ -105,7 +105,7 @@ CREATE TABLE remboursement(
     mois_rembourse INT NOT NULL,
     annee_rembourse INT NOT NULL,
     montant_rembourse DECIMAL(15,2) NOT NULL,
-    FOREIGN KEY(id_pret) REFERENCES pret(id)
+    FOREIGN KEY (id_pret) REFERENCES pret(id)
 );
 
 CREATE VIEW vw_prets_en_cours AS
