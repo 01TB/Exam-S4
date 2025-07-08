@@ -210,4 +210,3 @@ FROM (
 ) combined_data
 GROUP BY mois, annee
 ORDER BY annee, mois;
-    p.status = 'cree';
