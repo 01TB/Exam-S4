@@ -18,10 +18,8 @@ INSERT INTO client (nom, prenom) VALUES
 
 -- Insertion des utilisateurs (employés)
 INSERT INTO user (id_departement, nom, prenom, password) VALUES 
-(1, 'Roux', 'Philippe', '123'), -- password: password
-(1, 'Fournier', 'Émilie', '123'),
-(2, 'Girard', 'Marc', '123'),
-(2, 'Lefebvre', 'Caroline', '123');
+(1, 'admin', 'Philippe', '123'), -- password: password
+(2, 'reception', 'Émilie', '123');
 
 -- Insertion des types de prêts
 INSERT INTO type_pret (nom, montant_max, montant_min, duree_remboursement_max, duree_remboursement_min, taux) VALUES 
@@ -68,8 +66,8 @@ INSERT INTO type_pret (nom, montant_max, montant_min, duree_remboursement_max, d
 INSERT INTO depot (id_user, nom_investisseur, montant, date_depot, description) VALUES 
 (1, 'Investisseur Privé A', 50000.00, '2023-01-10 10:00:00', 'Dépôt initial'),
 (2, 'Fonds B', 100000.00, '2023-02-15 14:30:00', 'Financement prêts immo'),
-(3, 'Société C', 75000.00, '2023-03-20 11:45:00', 'Capital risque'),
-(4, 'Investisseur Privé D', 30000.00, '2023-04-05 09:15:00', 'Diversification'),
+(2, 'Société C', 75000.00, '2023-03-20 11:45:00', 'Capital risque'),
+(1, 'Investisseur Privé D', 30000.00, '2023-04-05 09:15:00', 'Diversification'),
 (1, 'Fonds E', 200000.00, '2023-05-12 16:20:00', 'Financement long terme'),
 (2, 'Société F', 50000.00, '2023-06-18 13:10:00', 'Participation');
 
