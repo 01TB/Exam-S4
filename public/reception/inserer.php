@@ -189,6 +189,17 @@ echo $_SESSION["user"]
                     <input type="date" name="date_demande" id="date_demande" class="input input-bordered border-[#A0B2B8] focus:border-[#007CBA]" required>
                 </div>
             </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="form-control">
+                    <label for="assurance" class="label">
+                        <span class="label-text text-[#101820] font-['Playfair_Display']">Assurance (%)</span>
+                        <svg class="h-5 w-5 text-[#007CBA] ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </label>
+                    <input type="number" name="assurance" id="assurance" step="0.01" min="0" max="20" class="input input-bordered border-[#A0B2B8] focus:border-[#007CBA]" required>
+                </div>
+            </div>
             <div class="flex gap-4">
                 <button type="button" id="simulateBtn" class="btn bg-[#003A70] text-[#F5F6F7] hover:bg-[#007CBA] flex items-center">
                     <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -268,25 +279,25 @@ echo $_SESSION["user"]
 
     <script>
         function ajouterOuModifierPret() {
-            const id = document.getElementById("id").value;
             const id_type_pret = document.getElementById("id_type_pret").value;
             const id_user_demandeur = 2;
-            const client_id = document.getElementById("client_id").value;
-            const montant = document.getElementById("montant").value;
+            const id_client = document.getElementById("id_client").value;
+            const montant_pret = document.getElementById("montant_pret").value;
             const date_demande = document.getElementById("date_demande").value;
             const duree_remboursement = document.getElementById("duree_remboursement").value;
             const taux = document.getElementById("taux").value;
+            const assurance = document.getElementById("assurance").value;
 
             // Client-side validation
-            if (!id_type_pret || !client_id || !montant || !date_demande || !duree_remboursement) {
+            if (!id_type_pret || !id_client || !montant_pret || !date_demande || !duree_remboursement) {
                 document.querySelector('.error').style.display = 'block';
                 document.querySelector('.error').textContent = 'Veuillez remplir tous les champs obligatoires';
                 setTimeout(() => document.querySelector('.error').style.display = 'none', 2000);
                 return;
             }
-            if (montant <= 0) {
+            if (montant_pret <= 0) {
                 document.querySelector('.error').style.display = 'block';
-                document.querySelector('.error').textContent = 'Le montant doit être positif';
+                document.querySelector('.error').textContent = 'Le montant du pret doit être positif';
                 setTimeout(() => document.querySelector('.error').style.display = 'none', 2000);
                 return;
             }
@@ -297,7 +308,7 @@ echo $_SESSION["user"]
                 return;
             }
 
-            const data = `id_type_pret=${encodeURIComponent(id_type_pret)}&id_client=${encodeURIComponent(client_id)}&montant_pret=${montant}&taux=${taux}&date_demande=${encodeURIComponent(date_demande)}&duree_remboursement=${duree_remboursement}&id_user_demandeur=${id_user_demandeur}`;
+            const data = `id_type_pret=${encodeURIComponent(id_type_pret)}&id_client=${encodeURIComponent(id_client)}&montant_pret=${encodeURIComponent(montant_pret)}&taux=${encodeURIComponent(taux)}&date_demande=${encodeURIComponent(date_demande)}&duree_remboursement=${encodeURIComponent(duree_remboursement)}&id_user_demandeur=${encodeURIComponent(id_user_demandeur)}&assurance=${encodeURIComponent(assurance)}`;
 
 
             ajax("POST", "/pret/demande", data, () => {
