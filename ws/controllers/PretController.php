@@ -5,22 +5,22 @@ require_once __DIR__ . '/../models/Depot.php';
 class PretController
 {
 
-        public static function getAllEnCours(){
-            header('Content-Type: application/json');
-            try {
-                $data = Pret::getAllEncours();
-                $sending = [];
-                $i=0;
-                foreach($data as $key){
-                    $sending[$i]= $key;
-                    $i++;
-                }
-                Flight::json($sending);
-            } catch (\Throwable $th) {
-                Flight::json(['error'=>$th->getMessage()]);
+    public static function getAllEnCours()
+    {
+        header('Content-Type: application/json');
+        try {
+            $data = Pret::getAllEncours();
+            $sending = [];
+            $i = 0;
+            foreach ($data as $key) {
+                $sending[$i] = $key;
+                $i++;
             }
-            
+            Flight::json($sending);
+        } catch (\Throwable $th) {
+            Flight::json(['error' => $th->getMessage()]);
         }
+    }
 
     public static function demanderPret()
     {
@@ -55,6 +55,17 @@ class PretController
             Flight::json(['message' => 'Validation du prêt réussi', "id" => $pret->getId()], 201);
         } else {
             Flight::halt(404, "Solde insuffisante de pour faire le prêt");
+        }
+    }
+    public static function refuserPret()
+    {
+        $data = Flight::request()->data;
+        $pret = Pret::getById($data->id_pret);
+        if ($pret) {
+            $pret->refuserPret($data->id_validateur);
+            Flight::json(['message' => 'Prêt refusé avec succès', 'id' => $pret->getId()], 201);
+        } else {
+            Flight::halt(404, "Prêt non trouvé");
         }
     }
 }

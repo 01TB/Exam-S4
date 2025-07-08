@@ -139,3 +139,20 @@ WHERE
         FROM remboursement r 
         WHERE r.id_pret = p.id
     ) < p.montant_total_remboursement;
+CREATE VIEW vw_prets_demande AS
+SELECT 
+    p.id
+FROM 
+    pret p
+JOIN 
+    user ud ON p.id_user_demandeur = ud.id
+LEFT JOIN 
+    user uv ON p.id_user_validateur = uv.id
+WHERE 
+    p.status = 'cree'
+    AND (
+        SELECT IFNULL(SUM(r.montant_rembourse), 0) 
+        FROM remboursement r 
+        WHERE r.id_pret = p.id
+    ) < p.montant_total_remboursement;
+;

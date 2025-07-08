@@ -1,38 +1,22 @@
-const apiBase = "http://localhost/Exam-S4/ws";
-
 function ajax(method, url, data, successCallback, errorCallback) {
   const xhr = new XMLHttpRequest();
-  const fullUrl = apiBase + url;
-
-  xhr.open(method, fullUrl, true);
-
-  // Toujours définir le Content-Type pour JSON
-  if (method !== "GET") {
+  xhr.open(method, url, true);
+  if (method === "POST") {
     xhr.setRequestHeader("Content-Type", "application/json");
   }
-
-  xhr.onreadystatechange = () => {
+  xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       if (xhr.status >= 200 && xhr.status < 300) {
         try {
-          const response = xhr.responseText
-            ? JSON.parse(xhr.responseText)
-            : null;
-          successCallback?.(response);
+          const response = JSON.parse(xhr.responseText);
+          successCallback(response);
         } catch (e) {
-          errorCallback?.("Invalid JSON response", xhr.status);
+          errorCallback("Invalid response from server");
         }
       } else {
-        errorCallback?.(xhr.statusText || "Erreur serveur", xhr.status);
+        errorCallback(xhr.responseText || "Server error");
       }
     }
   };
-
-  xhr.onerror = () => {
-    errorCallback?.("Erreur réseau", 0);
-  };
-
-  // Convertir les données en JSON pour les méthodes non-GET
-  const sendData = method === "GET" ? null : JSON.stringify(data);
-  xhr.send(sendData);
+  xhr.send(data);
 }
