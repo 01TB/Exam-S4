@@ -38,7 +38,7 @@ class PretController
             null,
             $data->taux,
             $data->assurance,
-            $data->date_demande,
+            $data->date_demande ?? date('Y-m-d H:i:s'),
             null
         );
         $id = Pret::demanderPret($demandePret);
@@ -48,7 +48,7 @@ class PretController
     public static function validerPret()
     {
         $data = Flight::request()->data;
-        $solde_actuelle = Depot::calculerSoldeDisponible($data->date_actuelle);
+        $solde_actuelle = Depot::calculerSoldeDisponible($data->date_actuelle ?? date('Y-m-d H:i:s'));
         $pret = Pret::getById($data->id_pret);
         if ($solde_actuelle >= $pret->getMontantPret()) {
             $pret->validerPret($data->id_validateur);

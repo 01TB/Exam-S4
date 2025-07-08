@@ -324,7 +324,7 @@
 
         function ajouterOuModifierPret() {
             const id_type_pret = document.getElementById("id_type_pret").value;
-            const id_user_demandeur = 1;
+            const id_user_demandeur = 2;
             const id_client = document.getElementById("id_client").value;
             const montant_pret = document.getElementById("montant_pret").value;
             const date_demande = document.getElementById("date_demande").value;
@@ -332,7 +332,7 @@
             const taux = document.getElementById("taux").value;
             const assurance = document.getElementById("assurance").value;
 
-            // Client-side validation
+            // Validation côté client (inchangée)
             if (!id_type_pret || !id_client || !montant_pret || !date_demande || !duree_remboursement) {
                 document.querySelector('.error').style.display = 'block';
                 document.querySelector('.error').textContent = 'Veuillez remplir tous les champs obligatoires';
@@ -341,7 +341,7 @@
             }
             if (montant_pret <= 0) {
                 document.querySelector('.error').style.display = 'block';
-                document.querySelector('.error').textContent = 'Le montant du pret doit être positif';
+                document.querySelector('.error').textContent = 'Le montant du prêt doit être positif';
                 setTimeout(() => document.querySelector('.error').style.display = 'none', 2000);
                 return;
             }
@@ -351,21 +351,29 @@
                 setTimeout(() => document.querySelector('.error').style.display = 'none', 2000);
                 return;
             }
-            
 
-            const data = `id_type_pret=${encodeURIComponent(id_type_pret)}&id_client=${encodeURIComponent(id_client)}&montant_pret=${encodeURIComponent(montant_pret)}&taux=${encodeURIComponent(taux)}&date_demande=${encodeURIComponent(date_demande)}&duree_remboursement=${encodeURIComponent(duree_remboursement)}&id_user_demandeur=${encodeURIComponent(id_user_demandeur)}&assurance=${encodeURIComponent(assurance)}`;
+            // Créer un objet JSON
+            const data = {
+                id_type_pret: id_type_pret,
+                id_client: id_client,
+                montant_pret: montant_pret,
+                taux: taux,
+                date_demande: date_demande,
+                duree_remboursement: duree_remboursement,
+                id_user_demandeur: id_user_demandeur,
+                assurance: assurance
+            };
 
-            alert(data);
-
-            ajax("POST", "/pret/demande", data,(response)=>{
+            // Envoyer les données en JSON
+            ajax("POST", "/pret/demande", JSON.stringify(data), (response) => {
                 alert(response.message);
-            }, 
-             (error) => {
+            }, (error) => {
                 document.querySelector('.error').style.display = 'block';
                 document.querySelector('.error').textContent = `Erreur: ${error}`;
                 setTimeout(() => document.querySelector('.error').style.display = 'none', 2000);
-            });
+            }, 'application/json'); // Spécifier le Content-Type
         }
+
         // Initialisation
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('date_demande').valueAsDate = new Date();
