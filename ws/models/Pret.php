@@ -332,6 +332,7 @@
                         $row['duree_remboursement'],
                         $row['status'],
                         $row['taux'],
+                        $row['assurance'],
                         $row['date_demande'],
                         $row['date_validation'],
                     );
