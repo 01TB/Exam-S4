@@ -299,13 +299,13 @@ class Pret
     {
         $db = getDB();
         $stmt = $db->prepare("INSERT INTO pret (id_client, 
-                                                           id_user_demandeur, 
-                                                           id_type_pret, 
-                                                           montant_pret, 
-                                                           duree_remboursement,
-                                                           taux,
-                                                           assurance,
-                                                           date_demande) 
+                                                        id_user_demandeur, 
+                                                        id_type_pret, 
+                                                        montant_pret, 
+                                                        duree_remboursement,
+                                                        taux,
+                                                        assurance,
+                                                        date_demande) 
                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->execute([
             $pret->getIdClient(),
