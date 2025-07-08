@@ -4,11 +4,6 @@ if (!isset($_SESSION["user"]) || !isset($_SESSION["user"]["id"])) {
     header("Location: /EXAM-S4/public/login.php");
     exit();
 }
-// Static clients for dropdown (replace with DB query later if needed)
-$clients = [
-    ['id' => 1, 'nom' => 'Jean Dupont'],
-    ['id' => 2, 'nom' => 'Marie Curie'],
-];
 ?>
 
 <!DOCTYPE html>
@@ -103,7 +98,7 @@ $clients = [
                         <li><a href="/EXAM-S4/public/reception/inserer.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Insérer un prêt</a></li>
                         <li><a href="/EXAM-S4/public/reception/liste_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Liste des prêts</a></li>
                         <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Déconnexion</a></li>
-                        <li><a href="/EXAM-S4/public/reception/liste_formulaire_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">liste_formulaire_prets</a></li>
+                        <li><a href="/EXAM-S4/public/reception/liste_formulaire_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Liste Formulaire</a></li>
                     </ul>
                 </div>
                 <div class="flex items-center">
@@ -114,12 +109,12 @@ $clients = [
                 </div>
             </div>
             <div class="navbar-center hidden lg:flex">
-                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#A0B2B8] rounded-box w-52">
-                    <li><a href="/EXAM-S4/public/reception/reception.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Accueil</a></li>
-                    <li><a href="/EXAM-S4/public/reception/inserer.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Insérer un prêt</a></li>
-                    <li><a href="/EXAM-S4/public/reception/liste_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Liste des prêts</a></li>
-                    <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">Déconnexion</a></li>
-                    <li><a href="/EXAM-S4/public/reception/liste_formulaire_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7]">liste_formulaire_prets</a></li>
+                <ul class="menu menu-horizontal px-1">
+                    <li><a href="/EXAM-S4/public/reception/reception.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7] rounded">Accueil</a></li>
+                    <li><a href="/EXAM-S4/public/reception/inserer.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7] rounded">Insérer un prêt</a></li>
+                    <li><a href="/EXAM-S4/public/reception/liste_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7] rounded">Liste des prêts</a></li>
+                    <li><a href="/EXAM-S4/public/login.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7] rounded">Déconnexion</a></li>
+                    <li><a href="/EXAM-S4/public/reception/liste_formulaire_prets.php" class="text-[#101820] hover:bg-[#007CBA] hover:text-[#F5F6F7] rounded">Liste Formulaire</a></li>
                 </ul>
             </div>
             <div class="navbar-end">
@@ -159,41 +154,79 @@ $clients = [
         <p>© 2025 CPbank. Tous droits réservés.</p>
     </footer>
 
+    <script src="../js/ajax.js"></script>
+
     <script>
         const userId = <?php echo json_encode((int)$_SESSION['user']['id']); ?>;
-        const clients = <?php echo json_encode($clients); ?>;
-        const loanTypes = [{
-                id: 1,
-                nom: 'Prêt personnel',
-                montant_min: 1000,
-                montant_max: 50000,
-                duree_remboursement_min: 6,
-                duree_remboursement_max: 60,
-                taux: 5.00
-            },
-            {
-                id: 2,
-                nom: 'Prêt automobile',
-                montant_min: 5000,
-                montant_max: 75000,
-                duree_remboursement_min: 12,
-                duree_remboursement_max: 84,
-                taux: 7.00
-            },
-            {
-                id: 3,
-                nom: 'Prêt immobilier',
-                montant_min: 50000,
-                montant_max: 500000,
-                duree_remboursement_min: 60,
-                duree_remboursement_max: 360,
-                taux: 3.50
-            }
-        ];
+        let allClients = [];
+        let allLoanTypes = [];
         let formCount = 0;
 
+        // Charger les clients
+        ajax("GET", "/clients", "", (response) => {
+            allClients = response;
+            if (formCount > 0) {
+                updateClientDropdowns();
+            }
+        }, (error) => {
+            document.querySelector('.error').style.display = 'block';
+            document.querySelector('.error').textContent = `Erreur lors du chargement des clients: ${error}`;
+            setTimeout(() => document.querySelector('.error').style.display = 'none', 2000);
+        });
+
+        // Charger les types de prêt
+        ajax("GET", "/types_pret", "", (response) => {
+            allLoanTypes = response;
+            if (formCount > 0) {
+                updateLoanTypeDropdowns();
+            }
+        }, (error) => {
+            document.querySelector('.error').style.display = 'block';
+            document.querySelector('.error').textContent = `Erreur lors du chargement des types de prêt: ${error}`;
+            setTimeout(() => document.querySelector('.error').style.display = 'none', 2000);
+        });
+
+        // Fonction pour mettre à jour les menus déroulants des clients
+        function updateClientDropdowns() {
+            document.querySelectorAll('[id^="id_client-"]').forEach(select => {
+                const currentValue = select.value;
+                select.innerHTML = '<option value="">Sélectionner un client</option>';
+                allClients.forEach(client => {
+                    const option = document.createElement('option');
+                    option.value = client.id;
+                    option.textContent = `${client.prenom} ${client.nom}`;
+                    if (client.id == currentValue) {
+                        option.selected = true;
+                    }
+                    select.appendChild(option);
+                });
+            });
+        }
+
+        // Fonction pour mettre à jour les menus déroulants des types de prêt
+        function updateLoanTypeDropdowns() {
+            document.querySelectorAll('[id^="id_type_pret-"]').forEach(select => {
+                const currentValue = select.value;
+                select.innerHTML = '<option value="">Sélectionner un type</option>';
+                allLoanTypes.forEach(type => {
+                    const option = document.createElement('option');
+                    option.value = type.id;
+                    option.textContent = `${type.nom} (${type.taux}%)`;
+                    option.setAttribute('data-taux', type.taux);
+                    option.setAttribute('data-montantmin', type.montant_min);
+                    option.setAttribute('data-montantmax', type.montant_max);
+                    option.setAttribute('data-dureemin', type.duree_remboursement_min);
+                    option.setAttribute('data-dureemax', type.duree_remboursement_max);
+                    if (type.id == currentValue) {
+                        option.selected = true;
+                    }
+                    select.appendChild(option);
+                });
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
-            addLoanForm(); // Add the first form on load
+            addLoanForm(); // Ajouter le premier formulaire au chargement
         });
 
         function addLoanForm() {
@@ -214,7 +247,7 @@ $clients = [
                         </label>
                         <select name="id_client" id="id_client-${formCount}" class="select select-bordered border-[#A0B2B8] focus:border-[#007CBA]" required>
                             <option value="">Sélectionner un client</option>
-                            ${clients.map(client => `<option value="${client.id}">${client.nom}</option>`).join('')}
+                            ${allClients.map(client => `<option value="${client.id}">${client.prenom} ${client.nom}</option>`).join('')}
                         </select>
                     </div>
                     <div class="form-control">
@@ -223,7 +256,7 @@ $clients = [
                         </label>
                         <select name="id_type_pret" id="id_type_pret-${formCount}" class="select select-bordered border-[#A0B2B8] focus:border-[#007CBA]" required>
                             <option value="">Sélectionner un type</option>
-                            ${loanTypes.map(type => `
+                            ${allLoanTypes.map(type => `
                                 <option value="${type.id}" 
                                         data-taux="${type.taux}" 
                                         data-montantmin="${type.montant_min}" 
@@ -283,9 +316,14 @@ $clients = [
                     </table>
                 </div>
             `;
+
             container.appendChild(formDiv);
 
-            // Add event listener for loan type selection
+            // Mettre à jour les menus déroulants pour ce nouveau formulaire
+            updateClientDropdowns();
+            updateLoanTypeDropdowns();
+
+            // Ajouter un écouteur d'événements pour la sélection du type de prêt
             document.getElementById(`id_type_pret-${formCount}`).addEventListener('change', function() {
                 const selectedOption = this.options[this.selectedIndex];
                 const formId = formCount;
@@ -306,7 +344,7 @@ $clients = [
                 }
             });
 
-            // Add event listeners for real-time simulation updates
+            // Ajouter des écouteurs pour les mises à jour en temps réel
             ['montant_pret', 'duree_remboursement', 'assurance'].forEach(field => {
                 document.getElementById(`${field}-${formCount}`).addEventListener('input', () => updateAmortizationTable(formCount));
             });
@@ -437,7 +475,7 @@ $clients = [
                     mensualite: calculateMonthlyPayment(montantPret, taux, duree)
                 };
 
-                // Calculate amortization schedule
+                // Calculer le tableau d'amortissement
                 const tauxMensuel = taux / 12 / 100;
                 let capitalRestant = montantPret;
                 const date = new Date(dateDemande);
