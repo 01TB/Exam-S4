@@ -1,7 +1,4 @@
-<?php
-require_once '../partials_reception/header.php';
-require_once '../partials_reception/sidebar.php';
-?>
+
 
 <style>
     main {
@@ -140,37 +137,6 @@ require_once '../partials_reception/sidebar.php';
 <main>
     <h2>Prêts en cours - Gestion des remboursements</h2>
     
-    <div class="filters">
-        <div class="filter-group">
-            <label for="filter-client">Client</label>
-            <select id="filter-client">
-                <option value="">Tous les clients</option>
-            </select>
-        </div>
-        
-        <div class="filter-group">
-            <label for="filter-type">Type de prêt</label>
-            <select id="filter-type">
-                <option value="">Tous les types</option>
-            </select>
-        </div>
-        
-        <div class="filter-group">
-            <label for="filter-montant-min">Montant min</label>
-            <input type="number" id="filter-montant-min" min="0" step="100" placeholder="Montant minimum">
-        </div>
-        
-        <div class="filter-group">
-            <label for="filter-montant-max">Montant max</label>
-            <input type="number" id="filter-montant-max" min="0" step="100" placeholder="Montant maximum">
-        </div>
-        
-        <div class="filter-group" style="align-self: flex-end;">
-            <button id="apply-filters" class="apply-btn">Appliquer</button>
-            <button id="reset-filters" class="reset-btn">Réinitialiser</button>
-        </div>
-    </div>
-    
     <div id="loading" class="loading">Chargement en cours...</div>
     <div id="prets-container">
         <table id="prets-table">
@@ -226,13 +192,8 @@ require_once '../partials_reception/sidebar.php';
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('remboursement-modal');
     const closeBtn = document.querySelector('.close');
-    const applyFiltersBtn = document.getElementById('apply-filters');
-    const resetFiltersBtn = document.getElementById('reset-filters');
     const remboursementForm = document.getElementById('remboursement-form');
     
-    // Initialisation
-    loadClients();
-    loadTypesPret();
     loadPretsEnCours();
     
     // Gestion des événements
@@ -245,46 +206,13 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.style.display = 'none';
         }
     });
-    
-    applyFiltersBtn.addEventListener('click', loadPretsEnCours);
+
     // resetFiltersBtn.addEventListener('click', resetFilters);
     
     remboursementForm.addEventListener('submit', function(e) {
         e.preventDefault();
         saveRemboursement();
     });
-
-    function loadClients() {
-        const clientSelect = document.getElementById('filter-client');
-        ajax("GET", "/clients", null, (clients) => {
-            clientSelect.innerHTML = '<option value="">Tous les clients</option>';
-            clients.forEach(client => {
-                const option = document.createElement('option');
-                option.value = client.id;
-                option.textContent = `${client.nom} ${client.prenom}`;
-                clientSelect.appendChild(option);
-            });
-        }, (error) => {
-            console.error("Erreur lors du chargement des clients :", error);
-            clientSelect.innerHTML = '<option value="">Erreur de chargement</option>';
-        });
-    }
-    
-    function loadTypesPret() {
-        const typeSelect = document.getElementById('filter-type');
-        ajax("GET", "/types-pret", null, (types) => {
-            typeSelect.innerHTML = '<option value="">Tous les types</option>';
-            types.forEach(type => {
-                const option = document.createElement('option');
-                option.value = type.id;
-                option.textContent = type.nom;
-                typeSelect.appendChild(option);
-            });
-        }, (error) => {
-            console.error("Erreur lors du chargement des types de prêt :", error);
-            typeSelect.innerHTML = '<option value="">Erreur de chargement</option>';
-        });
-    }
     
     function loadPretsEnCours() {
     const loading = document.getElementById('loading');
@@ -294,21 +222,9 @@ document.addEventListener('DOMContentLoaded', function() {
     loading.style.display = 'block';
     container.style.display = 'none';
     
-    // const clientId = document.getElementById('filter-client').value;
-    // const typeId = document.getElementById('filter-type').value;
-    // const montantMin = document.getElementById('filter-montant-min').value;
-    // const montantMax = document.getElementById('filter-montant-max').value;
-    
-    // let params = [];
-    // if (clientId) params.push(`client=${clientId}`);
-    // if (typeId) params.push(`type=${typeId}`);
-    // if (montantMin) params.push(`min=${montantMin}`);
-    // if (montantMax) params.push(`max=${montantMax}`);
-    
-    // const queryString = params.length > 0 ? `?${params.join('&')}` : '';
-    
     ajax('GET', `/pret/enCours`, null, 
         function(response) {
+            console.log(response);
             try {
                 // Vérifier si la réponse est valide
                 if (!response) {
@@ -392,15 +308,9 @@ document.addEventListener('DOMContentLoaded', function() {
     );
 }
     
-    // function resetFilters() {
-    //     document.getElementById('filter-client').value = '';
-    //     document.getElementById('filter-type').value = '';
-    //     document.getElementById('filter-montant-min').value = '';
-    //     document.getElementById('filter-montant-max').value = '';
-    //     loadPretsEnCours();
-    // }
     
     function initRemboursement(pretId, mensualite) {
+        
         document.getElementById('pret-id').value = pretId;
         document.getElementById('montant-rembourse').value = mensualite;
         
@@ -421,21 +331,25 @@ document.addEventListener('DOMContentLoaded', function() {
             montant_rembourse: document.getElementById('montant-rembourse').value
         };
         
-        const params = new URLSearchParams();
-        for (const key in data) {
-            params.append(key, data[key]);
-        }
+        // Création des paramètres encodés avec encodeURIComponent
+        const params = Object.keys(data).map(key => 
+            `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+        ).join('&');
         
-        ajax('POST', '/remboursements', params.toString(), (response) => {
-            alert('Remboursement enregistré avec succès');
-            modal.style.display = 'none';
-            loadPretsEnCours();
-        }, (error) => {
-            console.error('Erreur:', error);
-            alert('Erreur lors de l\'enregistrement du remboursement');
-        });
+        console.log(params);
+
+        ajax('POST', '/remboursements', params, 
+            // function(response) {
+            //     // Succès: fermer le modal et recharger la liste
+            //     modal.style.display = 'none';
+            //     loadPretsEnCours();
+            //     alert('Remboursement enregistré avec succès');
+            // },
+            function(error, status) {
+                console.error('Erreur:', error);
+                alert('Erreur lors de l\'enregistrement du remboursement');
+            }
+        );
     }
 });
 </script>
-
-<?php require_once '../partials_reception/footer.php'; ?>
