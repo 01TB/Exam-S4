@@ -146,8 +146,9 @@
             const tableBody = document.getElementById('loanTableBody');
 
             // Fetch pending loans
-            ajax('GET', '/pret/encours', null, (response) => {
+            ajax('GET', '/pret/enCours', null, (response) => {
                 tableBody.innerHTML = '';
+                console.log(response);
                 response.forEach(loan => {
                     const row = document.createElement('tr');
                     row.className = 'hover:bg-[#007CBA] hover:text-[#F5F6F7]';
