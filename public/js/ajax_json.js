@@ -1,5 +1,3 @@
-const apiBase = "http://localhost/Exam-S4/ws";
-
 function ajax(method, url, data, successCallback, errorCallback) {
     const xhr = new XMLHttpRequest();
     const fullUrl = apiBase + url;
