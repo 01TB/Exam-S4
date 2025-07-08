@@ -278,6 +278,48 @@ echo $_SESSION["user"]
     <script src="../js/ajax.js"></script>
 
     <script>
+        // Par ce code :
+        let allClient = [];
+        let allTypePret = [];
+
+        // Charger les clients
+        ajax("GET", "/client", "", (response) => {
+            allClient = response;
+            updateClientDropdown();
+        });
+
+        // Charger les types de prêt
+        ajax("GET", "/typePret", "", (response) => {
+            allTypePret = response;
+            updateTypePretDropdown();
+        });
+
+        // Fonction pour mettre à jour le dropdown des clients
+        function updateClientDropdown() {
+            const select = document.getElementById('id_client');
+            select.innerHTML = '<option value="">Sélectionner un client</option>';
+            allClient.forEach(client => {
+                const option = document.createElement('option');
+                option.value = client.id;
+                option.textContent = `${client.prenom} ${client.nom}`;
+                select.appendChild(option);
+            });
+        }
+
+        // Fonction pour mettre à jour le dropdown des types de prêt
+        function updateTypePretDropdown() {
+            const select = document.getElementById('id_type_pret');
+            select.innerHTML = '<option value="">Sélectionner un type</option>';
+            allTypePret.forEach(type => {
+                const option = document.createElement('option');
+                option.value = type.id;
+                option.textContent = `${type.nom} (${type.taux}%)`;
+                option.setAttribute('data-taux', type.taux);
+                option.setAttribute('data-dureemax', type.duree_remboursement_max);
+                select.appendChild(option);
+            });
+        }
+
         function ajouterOuModifierPret() {
             const id_type_pret = document.getElementById("id_type_pret").value;
             const id_user_demandeur = 2;
