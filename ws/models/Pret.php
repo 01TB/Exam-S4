@@ -306,7 +306,68 @@
             ]);
         }
 
+        public static function getAllEncours(){
+            try {
+                $db = getDB();
+                $stmt = $db->query("SELECT * FROM pret p WHERE p.id IN (SELECT id FROM vw_prets_en_cours)");
+                $types = [];
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $pret = new Pret(
+                        $row['id'],
+                        $row['id_client'],
+                        $row['id_user_demandeur'],
+                        $row['id_user_validateur'],
+                        $row['id_type_pret'],
+                        $row['montant_pret'],
+                        $row['montant_remboursement_par_mois'],
+                        $row['montant_total_remboursement'],
+                        $row['duree_remboursement'],
+                        $row['status'],
+                        $row['taux'],
+                        $row['date_demande'],
+                        $row['date_validation'],
+                    );
+                    $types[]= $pret->toArray();
 
+                }
+                return $types;
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+        }
+
+        /**
+ * Convertit l'objet Pret en tableau associatif pour conversion JSON
+ * @return array - Tableau des propriétés de l'objet Pret
+ */
+    public function toArray(): array {
+        return [
+            'id' => $this->id,
+            'id_client' => $this->idClient,
+            'id_user_demandeur' => $this->idUserDemandeur,
+            'id_user_validateur' => $this->idUserValidateur,
+            'id_type_pret' => $this->idTypePret,
+            'montant_pret' => $this->montantPret,
+            'montant_remboursement_par_mois' => $this->montantRemboursementParMois,
+            'montant_total_remboursement' => $this->montantTotalRemboursement,
+            'duree_remboursement' => $this->dureeRemboursement,
+            'status' => $this->status,
+            'taux' => $this->taux,
+            'date_demande' => $this->dateDemande
+            // // Calculs supplémentaires utiles
+            // 'montant_interet' => $this->getMontantInteret(),
+            // 'tableau_amortissement' => $this->calculerTableauAmortissement()
+        ];
+    }
+
+    /**
+     * Convertit l'objet Pret en JSON
+     * @param int $options - Options pour json_encode (optionnel)
+     * @return string - Représentation JSON de l'objet Pret
+     */
+    public function toJson(int $options = 0): string {
+        return json_encode($this->toArray(), $options);
+    }
 
     }
 ?>

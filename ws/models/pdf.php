@@ -74,7 +74,7 @@
             // Retourner l'URL du PDF généré
             header('Content-Type: application/json');
             return[
-                'pdfUrl' => 'http://localhost/Exam-S4/temp/' . $pdfFileName
+                'pdfUrl' => 'http://localhost/Exam-S4/ws/temp/' . $pdfFileName
             ];
 
             }

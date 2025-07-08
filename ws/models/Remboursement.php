@@ -137,8 +137,7 @@ class Remboursement {
             return true;
         } catch (Exception $e) {
             $db->rollBack();
-            error_log("Erreur lors de l'enregistrement transactionnel: " . $e->getMessage());
-            return false;
+            throw $e;
         }
     }
 
