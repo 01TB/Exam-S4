@@ -129,9 +129,9 @@ echo $_SESSION["user"]
                         </svg>
                     </label>
                     <select name="id_client" id="id_client" class="select select-bordered border-[#A0B2B8] focus:border-[#007CBA]" required>
-                        <option value="">Sélectionner un client</option>
+                        <!-- <option value="">Sélectionner un client</option>
                         <option value="1">Dupont Jean</option>
-                        <option value="2">Martin Sophie</option>
+                        <option value="2">Martin Sophie</option> -->
                     </select>
                 </div>
                 <div class="form-control">
@@ -142,10 +142,10 @@ echo $_SESSION["user"]
                         </svg>
                     </label>
                     <select name="id_type_pret" id="id_type_pret" class="select select-bordered border-[#A0B2B8] focus:border-[#007CBA]" required>
-                        <option value="">Sélectionner un type</option>
+                        <!-- <option value="">Sélectionner un type</option>
                         <option value="1" data-taux="5.0" data-dureemax="60">Prêt personnel (5.0%)</option>
                         <option value="2" data-taux="7.0" data-dureemax="84">Prêt automobile (7.0%)</option>
-                        <option value="3" data-taux="3.5" data-dureemax="360">Prêt immobilier (3.5%)</option>
+                        <option value="3" data-taux="3.5" data-dureemax="360">Prêt immobilier (3.5%)</option> -->
                     </select>
                 </div>
             </div>
@@ -166,7 +166,7 @@ echo $_SESSION["user"]
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
                     </label>
-                    <input type="number" name="duree_remboursement" id="duree_remboursement" min="6" max="360" class="input input-bordered border-[#A0B2B8] focus:border-[#007CBA]" required>
+                    <input type="number" name="duree_remboursement" id="duree_remboursement" min="" max="" class="input input-bordered border-[#A0B2B8] focus:border-[#007CBA]" required>
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -177,7 +177,7 @@ echo $_SESSION["user"]
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                         </svg>
                     </label>
-                    <input type="number" name="taux" id="taux" step="0.01" min="0" max="20" class="input input-bordered border-[#A0B2B8] focus:border-[#007CBA]" required>
+                    <input type="number" name="taux" id="taux" step="0.01" min="0" max="99" class="input input-bordered border-[#A0B2B8] focus:border-[#007CBA]" required>
                 </div>
                 <div class="form-control">
                     <label class="label" for="date_demande">
@@ -197,7 +197,7 @@ echo $_SESSION["user"]
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                         </svg>
                     </label>
-                    <input type="number" name="assurance" id="assurance" step="0.01" min="0" max="20" class="input input-bordered border-[#A0B2B8] focus:border-[#007CBA]" required>
+                    <input type="number" name="assurance" id="assurance" step="0.01" min="0" max="50" class="input input-bordered border-[#A0B2B8] focus:border-[#007CBA]" required>
                 </div>
             </div>
             <div class="flex gap-4">
@@ -278,6 +278,50 @@ echo $_SESSION["user"]
     <script src="../js/ajax.js"></script>
 
     <script>
+        // Par ce code :
+        let allClient = [];
+        let allTypePret = [];
+
+        // Charger les clients
+        ajax("GET", "/clients", "", (response) => {
+            allClient = response;
+            updateClientDropdown();
+        });
+
+        // Charger les types de prêt
+        ajax("GET", "/types_pret", "", (response) => {
+            allTypePret = response;
+            updateTypePretDropdown();
+        });
+
+        // Fonction pour mettre à jour le dropdown des clients
+        function updateClientDropdown() {
+            const select = document.getElementById('id_client');
+            select.innerHTML = '<option value="">Sélectionner un client</option>';
+            allClient.forEach(client => {
+                const option = document.createElement('option');
+                option.value = client.id;
+                option.textContent = `${client.prenom} ${client.nom}`;
+                select.appendChild(option);
+            });
+        }
+
+        // Fonction pour mettre à jour le dropdown des types de prêt
+        function updateTypePretDropdown() {
+            const select = document.getElementById('id_type_pret');
+            select.innerHTML = '<option value="">Sélectionner un type</option>';
+            allTypePret.forEach(type => {
+                const option = document.createElement('option');
+                option.value = type.id;
+                option.textContent = `${type.nom} (${type.taux}%)`;
+                option.setAttribute('data-taux', type.taux);
+                option.setAttribute('data-montantmax', type.montant_max);
+                option.setAttribute('data-dureemax', type.duree_remboursement_max);
+                option.setAttribute('data-dureemin', type.duree_remboursement_min);
+                select.appendChild(option);
+            });
+        }
+
         function ajouterOuModifierPret() {
             const id_type_pret = document.getElementById("id_type_pret").value;
             const id_user_demandeur = 2;
@@ -331,7 +375,10 @@ echo $_SESSION["user"]
                 const selectedOption = this.options[this.selectedIndex];
                 if (selectedOption.value) {
                     document.getElementById('taux').value = selectedOption.getAttribute('data-taux');
+                    document.getElementById('montant_pret').value = selectedOption.getAttribute('data-montantmax');
+                    document.getElementById('duree_remboursement').value = selectedOption.getAttribute('data-dureemin');
                     document.getElementById('duree_remboursement').max = selectedOption.getAttribute('data-dureemax');
+                    document.getElementById('duree_remboursement').min = selectedOption.getAttribute('data-dureemin');
                 }
             });
 

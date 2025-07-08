@@ -74,11 +74,12 @@ class RemboursementController {
             $data->annee_rembourse,
             $data->montant_rembourse
         );
+        try {
 
         // Récupérer le prêt pour calculer les intérêts
         $pret = Pret::getById($data->id_pret);
         if (!$pret) {
-            Flight::halt(404, 'Prêt non trouvé');
+            throw new Exception( 'Prêt non trouvé');
         }
 
         // Calculer les intérêts pour la période
@@ -91,7 +92,7 @@ class RemboursementController {
         );
 
         // Enregistrement transactionnel
-        try {
+        
             $success = Remboursement::enregistrerRemboursement($remboursement, $interet);
             Flight::json([
                 'message' => 'Remboursement et intérêt enregistrés',
