@@ -1,6 +1,4 @@
 <?php
-require_once '../partials_reception/header.php';
-require_once '../partials_reception/sidebar.php';
 ?>
 <style>
     main {
@@ -57,4 +55,3 @@ require_once '../partials_reception/sidebar.php';
         </tbody>
     </table>
 </main>
-<?php require_once '../partials_reception/footer.php'; ?>
